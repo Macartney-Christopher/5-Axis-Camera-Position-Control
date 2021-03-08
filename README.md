@@ -17,7 +17,7 @@
       -	Allows for optimal position of center of mass
       -	Possibility of camera rotation (mitigated by tightness 
 
-    ### Design 2 outweighed Design 1
+    #### Design 2 outweighed Design 1
     ![image](https://user-images.githubusercontent.com/59852573/110351632-0a3d9f80-8003-11eb-894d-47ed1a3b9d3a.png)
 
 ## Adjustable tightness to sliding rail
@@ -33,7 +33,7 @@
       -	Allows for desired tightness using tools
       -	3D printable
 
-    ### Design 2 outweighed Design 1
+    #### Design 2 outweighed Design 1
     ![image](https://user-images.githubusercontent.com/59852573/110356542-5e974e00-8008-11eb-9604-2b08a7cf43be.png)
     
 ## Additional stepper motors and adjustability for focus & zoom
@@ -49,7 +49,7 @@
       -	Only collides with board if camera is upside-down (unlikely)
       -	Gravity helps prevent any skipping of the gears because they are above the lens
 
-	  ### Design 2 outweighed Design 1
+	  #### Design 2 outweighed Design 1
 
 
 
