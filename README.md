@@ -17,5 +17,5 @@ Usage: The next section is usage, in which you instruct other people on how to u
 
 ## Credits
   The mechanical, hardware, and software design is an adapted version of [isaac879](https://github.com/isaac879?tab=repositories)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
-
-[LICENSE](LICENSE)
+## License
+[Project license.](LICENSE)
