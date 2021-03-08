@@ -1,1 +1,6 @@
-This is a story all about
+'
+digitalWrite(stepXPin,HIGH);
+ delayMicroseconds(500);
+ digitalWrite(stepXPin,LOW);
+ delayMicroseconds(500);
+'
