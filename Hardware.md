@@ -40,7 +40,15 @@ const int stepXPin = 2; //X.STEP
 ```
 
 ## CNC Shield: Driving Steppers with Universal G-Code Sender (UGS)
-To simulate more realistically the controls of the steppers I chose to use Universal G-Code Sender with the CNC Shield.
+To realistically simulate the controls of the steppers I chose to use Universal G-Code Sender with the CNC Shield. 
+1. Upload Grbl source code to the Arduino Uno: https://github.com/grbl/grbl/blob/master/grbl/examples/grblUpload/grblUpload.ino.
+2. Download Universal G-Code Sender and connect your Arduino Uno.
+3. Setup stepper motors and drivers to CNC shield.
+4. Press connect on the top corner and ensure the Arduino Uno is connected.
+5. Begin messing around.
+ 
+Using UGS for the camera position control was not ideal because I had to enter the G commands manually everytime. A few solutions came to mind:
+
 
 grbl to arduino
 geany C# 
