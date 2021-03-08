@@ -1,4 +1,4 @@
-# HARDWARE
+# Hardware
 
 The final objective for the Camera is to control it via Bluetooth with the given code using the custom PCB.
 
