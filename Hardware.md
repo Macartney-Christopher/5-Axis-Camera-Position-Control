@@ -47,7 +47,11 @@ To realistically simulate the controls of the steppers I chose to use Universal 
 4. Press connect on the top corner and ensure the Arduino Uno is connected.
 5. Begin messing around.
  
-Using UGS for the camera position control was not ideal because I had to enter the G commands manually everytime. A few solutions came to mind:
+Using UGS for the camera position control was not ideal because I had to enter the G commands manually everytime. It is an issue because the three core motors don't move the body in cartesian axes. Two motors rotate the body on its own axes and one moves along the x axis. Moreover, the two motors also have a gear ratio which don't represent the rotation of the body 1:1 with the motors. A few solutions came to mind:
+- Draw what the motors would do in cartesian coordinates and convert to G commands.
+- Write code to enter the desired angles of the camera and output the G commands.
+
+The first option is an interesting idea because the user could visually see the sequence of motor actuation. The biggest issue is being able to constantly convert to cartesions as the user draws on two of three axes. 
 
 
 grbl to arduino
