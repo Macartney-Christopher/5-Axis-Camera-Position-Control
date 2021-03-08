@@ -55,7 +55,7 @@ Using UGS for the camera position control was not ideal because I had to enter t
 	This is an interesting idea because the user could visually see the sequence of motor actuation. The biggest issue is being able to constantly convert to cartesions as the user draws on two of three axes. 
 2. Write code to enter the desired angles of the camera and output the G commands.
 	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](GCode_Maker.cs).
-# LINK C# CODE HERE
+
 The C# program asks for angle of tilting and panning, and the distance of slider travel. It gives in return two G commands, the first to set the initial position and the second to execute the desired move.
 Watch an example video here:
 # ENTER YOUTUBE LINK HERE TO WATCH 
