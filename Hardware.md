@@ -28,3 +28,16 @@ The C# program asks for angle of tilting and panning, and the distance of slider
 [Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
 
 ## Using a Custom PCB
+In Isaac879's project he kindly includes the files and the component list to build the PCB. I started soldering immediately when they came in.
+
+preface by saying the final goal is to have two additional motors
+
+Soldering
+connecting code to nano: EEPROM not enough dynamic
+connecting code to nano 33 ble: no EEPROM, enough dynamic, not correct architecture for FlashStorage
+connecting code to nano 33 iOt: no EEPROM, enough dynamic, correct architecture for FlashStorage
+finding the correct motors (not too big, not many pins, enough torque)
+using free pinouts for two additional steppers (add screenshot of layout with available pins);
+adding wires
+
+had to sacrifice the camera shutter trigger function to use the pinout
