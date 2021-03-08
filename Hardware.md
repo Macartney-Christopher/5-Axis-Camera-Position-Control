@@ -39,8 +39,10 @@ connecting code to nano 33 iOt: no EEPROM, enough dynamic, correct architecture 
 finding the correct motors (not too big, not many pins, enough torque)
 using free pinouts for two additional steppers (add screenshot of layout with available pins);
 shorting R1
-shorting 
-removing R5
-adding wires
+shorting A1 and removing R5
+adding wires to small stepper drivers
+wire from Nano Vin to H3 power
+wire from Nano 3.3V to P2 5V
+cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
 
 had to sacrifice the camera shutter trigger function to use the pinout
