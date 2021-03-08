@@ -1,7 +1,13 @@
-HARDWARE
+## HARDWARE
+
 The final objective for the Camera is to control it via Bluetooth with the given code using the custom PCB.
-Driving Stepper Directly
-4.	With the mechanical part put in place the Camera system needed to be tested. To mitigate any issues that could arise from code and wiring, I chose to drive the stepper directly using a CNC Shield.
+
+
+### CNC Shield: Driving Stepper Directly
+
+With the mechanical part put in place the Camera system needed to be tested. To mitigate any issues that could arise from code and wiring, I chose to drive the stepper directly using a CNC Shield
+	
+```
 const int stepXPin = 2; //X.STEP
  const int dirXPin = 5; // X.DIR
  void setup() {
@@ -31,7 +37,5 @@ const int stepXPin = 2; //X.STEP
  }
  delay(1000);
  }
-
-Using a CNC Sheild
-
-Using a Custom PCB
+```
+### Using a Custom PCB
