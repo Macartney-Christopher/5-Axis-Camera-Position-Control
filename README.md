@@ -51,12 +51,5 @@
 
 	  ##### Design 2 outweighed Design 1
 
-Some basic Git commands are:
-```
-git status
-git add
-git commit
-```
-
 
 
