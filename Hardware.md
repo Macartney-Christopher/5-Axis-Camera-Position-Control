@@ -30,19 +30,42 @@ The C# program asks for angle of tilting and panning, and the distance of slider
 ## Using a Custom PCB
 In Isaac879's project he kindly includes the files and the component list to build the PCB. I started soldering immediately when they came in.
 
+
 preface by saying the final goal is to have two additional motors
 
-Soldering
-connecting code to nano: EEPROM not enough dynamic
-connecting code to nano 33 ble: no EEPROM, enough dynamic, not correct architecture for FlashStorage
-connecting code to nano 33 iOt: no EEPROM, enough dynamic, correct architecture for FlashStorage
-finding the correct motors (not too big, not many pins, enough torque)
-using free pinouts for two additional steppers (add screenshot of layout with available pins);
-shorting R1
-shorting A1 and removing R5
-adding wires to small stepper drivers
-wire from Nano Vin to H3 power
-wire from Nano 3.3V to P2 5V
-cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
+#### Soldering
+It was my first time soldering components onto a PCB. The only challenge was keeping headers in the upright position while I soldered on the opposite side.
+MENTION HALL SENSORS
+
+### Using an Arduino Nano 
+Isaac879 uses an Arduino Nano to complete his project. That is a great solution for what he needed. He used almost the entire static and dynamic memory of the Nano. 
+To test the PCB I plugged in the Nano and uploaded Isaac879's code. It worked great.
+#### Problem
+When initialized the two other steppers with AccelStepper it quickly took up memory and I was at 107% capacity only with initilization. I removed a couple functions in the code that I did not need, such as all the functions that would operate the camera shutter. **It still was not enough memory so I looked at alternative boards.**
+
+#### Solution
+My colleague chose the Arduino Nano 33 BLE to solve the memory issue. The board had CPU Flash Memory which replaced the EEPROM.
+
+### Using an Arduino Nano 33 BLE
+With the Arduino Nano 33 BLE there was plenty of memory to initialize all five stepper motors. The integrated bluetooth on this Nano allowed me to remove the bluetooth header on the PCB
+#### Problem
+When changing the EEPROM code to Flash Storage I kept getting an architecture error:
+![image](https://user-images.githubusercontent.com/59852573/110384195-4edd3100-802b-11eb-953d-3ee4fa40a7a4.png)
+After further research it was the architecture of the CPU that was not compatible with the FlashStorage library. The workarounds were complex and required extensive knowledge of CPU architecture.
+#### Solution
+Finally, we chose to move to the Arduino Nano 33 IoT which didn't present any issues.
+
+### Using an Arduino Nano 33 IoT
+With the Arduino Nano 33 IoT everything was compiling perfectly. There was enough memory and the correct architecture for the FlashStorage library.
+
+
+Finding the correct motors (not too big, not many pins, enough torque)
+Using free pinouts for two additional steppers (add screenshot of layout with available pins);
+Shorting R1
+Shorting A1 and removing R5
+Adding wires to small stepper drivers
+Wire from Nano Vin to H3 power
+Wire from Nano 3.3V to P2 5V
+Cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
 
 had to sacrifice the camera shutter trigger function to use the pinout
