@@ -57,8 +57,6 @@ Using UGS for the camera position control was not ideal because I had to enter t
 	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](GCode_Maker.cs).
 
 The C# program asks for angle of tilting and panning, and the distance of slider travel. It gives in return two G commands, the first to set the initial position and the second to execute the desired move.
-Watch an example video here:
-# ENTER YOUTUBE LINK HERE TO WATCH 
-
+[Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
 
 ## Using a Custom PCB
