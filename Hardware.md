@@ -38,6 +38,9 @@ connecting code to nano 33 ble: no EEPROM, enough dynamic, not correct architect
 connecting code to nano 33 iOt: no EEPROM, enough dynamic, correct architecture for FlashStorage
 finding the correct motors (not too big, not many pins, enough torque)
 using free pinouts for two additional steppers (add screenshot of layout with available pins);
+shorting R1
+shorting 
+removing R5
 adding wires
 
 had to sacrifice the camera shutter trigger function to use the pinout
