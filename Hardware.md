@@ -28,32 +28,31 @@ The C# program asks for angle of tilting and panning, and the distance of slider
 [Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
 
 ## Using a Custom PCB
-In Isaac879's project he kindly includes the files and the component list to build the PCB. I started soldering immediately when they came in.
-
-
-preface by saying the final goal is to have two additional motors
+Isaac879 includes the files and the component list to build the PCB in his repository. After soldering the components to the board we can begin testing.
+*Note: The final objective is to have five total stepper motors, two more than what the PCB accounts for.*
 
 #### Soldering
-It was my first time soldering components onto a PCB. The only challenge was keeping headers in the upright position while I soldered on the opposite side.
-MENTION HALL SENSORS
+The only challenge wben soldering is keeping the headers in the upright position while soldering on the opposite side. This project upgrade accounts 3x hall sensors wired to headers, 8x 7-10cm M-M wires, and 2x 7-10cm M-M split wires.
 
 ### Using an Arduino Nano 
-Isaac879 uses an Arduino Nano to complete his project. That is a great solution for what he needed. He used almost the entire static and dynamic memory of the Nano. 
-To test the PCB I plugged in the Nano and uploaded Isaac879's code. It worked great.
+Isaac879 uses the just about the entire static and dynamic memory available on an Arduino Nano to complete his project. The PCB worked when adding the Nano to the PCB and uploading isaac879's original code.
+
 #### Problem
-When initialized the two other steppers with AccelStepper it quickly took up memory and I was at 107% capacity only with initilization. I removed a couple functions in the code that I did not need, such as all the functions that would operate the camera shutter. **It still was not enough memory so I looked at alternative boards.**
+Initializing the two additional steppers with AccelStepper quickly took up memory in the Nano. The code took 107% capacity only with initilization. Removing functions that were not critical, such as all that would operate the camera shutter, was still not enough. An alternative board was necessary.
 
 #### Solution
-My colleague chose the Arduino Nano 33 BLE to solve the memory issue. The board had CPU Flash Memory which replaced the EEPROM.
+The Arduino Nano 33 BLE to solves the memory issue. Moreover, the board had CPU Flash Memory which replaces the EEPROM.
 
 ### Using an Arduino Nano 33 BLE
-With the Arduino Nano 33 BLE there was plenty of memory to initialize all five stepper motors. The integrated bluetooth on this Nano allowed me to remove the bluetooth header on the PCB
+With the Arduino Nano 33 BLE there's plenty of memory to initialize all five stepper motors. The integrated bluetooth on this Nano made the Bluetooth header on the PCB available.
+
 #### Problem
-When changing the EEPROM code to Flash Storage I kept getting an architecture error:
+When changing the EEPROM code to Flash Storage the same an architecture error came up:
 ![image](https://user-images.githubusercontent.com/59852573/110384195-4edd3100-802b-11eb-953d-3ee4fa40a7a4.png)
-After further research it was the architecture of the CPU that was not compatible with the FlashStorage library. The workarounds were complex and required extensive knowledge of CPU architecture.
+The architecture of the CPU is not compatible with FlashStorage library. The workarounds with the same board aer complex and require extensive knowledge of CPU architecture.
+
 #### Solution
-Finally, we chose to move to the Arduino Nano 33 IoT which didn't present any issues.
+Finally, the Arduino Nano 33 IoT doesn't present any compilation issues and worked great.
 
 ### Using an Arduino Nano 33 IoT
 With the Arduino Nano 33 IoT everything was compiling perfectly. There was enough memory and the correct architecture for the FlashStorage library.
