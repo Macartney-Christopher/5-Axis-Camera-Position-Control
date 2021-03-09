@@ -9,9 +9,9 @@ The AccelStepper and MultiStepper libraries are complimentary, often one will be
 FlashStorage ended up being more reliable. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
 ## Adding 2 Stepper Motors
-&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables .
-&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial value for the variables requires a lot of empirical testing based on visual results of the motor actuation.
-&nbsp;&nbsp;&nbsp;I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section or else the two additional motors would continuously rotate.
+<p>&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables.<p/>
+<p>&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial value for the variables requires a lot of empirical testing based on visual results of the motor actuation. <p/>
+<p>&nbsp;&nbsp;&nbsp;I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section or else the two additional motors would continuously rotate.<p/>
 
 ## Driving CPU Port Directly
 &nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly.
