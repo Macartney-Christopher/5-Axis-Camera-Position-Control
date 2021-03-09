@@ -45,8 +45,8 @@
 //Used with herringbone gears
 #define TILT_GEAR_RATIO 3.047619047619047619047619047619 //64/21 teeth
 
-#define FOCUS_GEAR_RATIO 0.5  //w
-#define ZOOM_GEAR_RATIO 0.5   //w
+#define FOCUS_GEAR_RATIO 0.5 
+#define ZOOM_GEAR_RATIO 0.5  
 
 
 #define MAX_STRING_LENGTH 10
@@ -61,12 +61,11 @@
 #define INSTRUCTION_ENABLE 'e'
 #define INSTRUCTION_SET_PAN_SPEED 's'
 #define INSTRUCTION_SET_TILT_SPEED 'S'
-#define INSTRUCTION_INVERT_PAN 'i'               //look into getting rid of this if not enough memory
-#define INSTRUCTION_INVERT_TILT 'I'              //look into getting rid of this if not enough memory
+#define INSTRUCTION_INVERT_PAN 'i'               
+#define INSTRUCTION_INVERT_TILT 'I'             
 #define INSTRUCTION_SET_PAN_HALL_OFFSET 'o'
 #define INSTRUCTION_SET_TILT_HALL_OFFSET 'O'
-#define INSTRUCTION_SET_HOMING 'H'
-//#define INSTRUCTION_TRIGGER_SHUTTER 'c'          //useless
+#define INSTRUCTION_SET_HOMING 'H'     
 #define INSTRUCTION_AUTO_HOME 'A'
 #define INSTRUCTION_DEBUG_STATUS 'R'
 #define INSTRUCTION_EXECUTE_MOVES ';'               
@@ -80,12 +79,9 @@
 #define INSTRUCTION_EDIT_DELAY 'D'
 #define INSTRUCTION_CLEAR_ARRAY 'C'
 #define INSTRUCTION_SAVE_TO_FLASHSTORAGE 'U' //x
-//#define INSTRUCTION_PANORAMICLAPSE 'L'            //useless
-//#define INSTRUCTION_ANGLE_BETWEEN_PICTURES 'b'    //useless
-//#define INSTRUCTION_DELAY_BETWEEN_PICTURES 'B'    //useless
-#define INSTRUCTION_TIMELAPSE 'l'                 //maybe?
+#define INSTRUCTION_TIMELAPSE 'l'               
 #define INSTRUCTION_SLIDER_MILLIMETRES 'x'        
-#define INSTRUCTION_INVERT_SLIDER 'j'             //look into getting rid of this if not enough memory
+#define INSTRUCTION_INVERT_SLIDER 'j'             
 #define INSTRUCTION_SET_SLIDER_SPEED 'X'          
 #define INSTRUCTION_ORIBIT_POINT '@'
 #define INSTRUCTION_CALCULATE_TARGET_POINT 'T'  
@@ -99,29 +95,6 @@
 #define INSTRUCTION_ZOOM_DEGREES 'y' //zoom x degrees  //w
 #define INSTRUCTION_INVERT_FOCUS 'F'
 #define INSTRUCTION_INVERT_ZOOM 'Y'
-
-
-
-/*#define EEPROM_ADDRESS_HOMING_MODE 0
-#define EEPROM_ADDRESS_PAN_MAX_SPEED 17
-#define EEPROM_ADDRESS_TILT_MAX_SPEED 21
-#define EEPROM_ADDRESS_HALL_PAN_OFFSET 33
-#define EEPROM_ADDRESS_HALL_TILT_OFFSET 37
-#define EEPROM_ADDRESS_INVERT_PAN 41
-#define EEPROM_ADDRESS_INVERT_TILT 42
-#define EEPROM_ADDRESS_MODE 43
-#define EEPROM_ADDRESS_DEGREES_PER_PICTURE 45
-#define EEPROM_ADDRESS_PANORAMICLAPSE_DELAY 49
-#define EEPROM_ADDRESS_SLIDER_MAX_SPEED 70
-#define EEPROM_ADDRESS_SLIDER_ACCELERATION 74
-#define EEPROM_ADDRESS_INVERT_SLIDER 78
-#define EEPROM_ADDRESS_ACCELERATION_ENABLE 79
-#define EEPROM_ADDRESS_PAN_ACCEL_INCREMENT_DELAY 80
-#define EEPROM_ADDRESS_TILT_ACCEL_INCREMENT_DELAY 82
-#define EEPROM_ADDRESS_SLIDER_ACCEL_INCREMENT_DELAY 84
-
-//#define EEPROM_ADDRESS_INVERT_FOCUS //address number  //w
-//#define EEPROM_ADDRESS_INVERT_ZOOM //address number   //w*/
 
 #define VERSION_NUMBER "Version: 3.11.2\n"
 
@@ -187,7 +160,6 @@ void editDelay(unsigned int ms);
 void printKeyframeElements(void);
 void saveEEPROM(void);
 void printEEPROM(void);
-//void setEEPROMVariables(void);
 void invertPanDirection(bool);
 void invertTiltDirection(bool);
 void setTargetPositions(float, float, float, float, float);
@@ -213,7 +185,6 @@ float zoomStepsToDegrees(float);
 float zoomStepsToDegrees(long);
 float focusDegreesToSteps(float);
 float zoomDegreesToSteps(float);
-
 
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
