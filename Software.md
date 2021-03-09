@@ -7,3 +7,4 @@ understanding how AccelStepper and Multistepper function
 allocating the correct pins
 adding two extra motors without creating issues witht he other function
 issue with PortB
+bit manipulation
