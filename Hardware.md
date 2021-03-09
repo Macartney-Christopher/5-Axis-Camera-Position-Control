@@ -58,7 +58,7 @@ The architecture of the CPU is not compatible with FlashStorage library. The wor
 &nbsp;&nbsp;&nbsp;With the Arduino Nano 33 IoT everything was compiling perfectly. There was enough memory and the correct architecture for the FlashStorage library.
 
 ### Finding PCB Pinouts
-Adding two more steppers is critical for the project. There are eight free pins on the PCB that can be used for digital signals: D0 (RX), D1 (TX), D2, D13, A1, A2, A6, and A7. Pins 0 and 1, and pin 2 on H1 belong to the camera trigger and a hall sensor respectively. The camera trigger is not necessary for this project, the fourth hall sensor does not add value to this project.
+&nbsp;&nbsp;&nbsp;Adding two more steppers is critical for the project. There are eight free pins on the PCB that can be used for digital signals: D0 (RX), D1 (TX), D2, D13, A1, A2, A6, and A7. Pins 0 and 1, and pin 2 on H1 belong to the camera trigger and a hall sensor respectively. The camera trigger is not necessary for this project, the fourth hall sensor does not add value to this project.
 Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only require four digital pins. The eight pins are perfect for the two small stepper motors.
 
 ### Modifying the PCB
