@@ -17,7 +17,7 @@ I was careful when increasing the arrays and the function inputs. Three motors h
 ## Driving CPU Port Directly
 Isaac879's implements a function that drives the microcontroller directly. For a beginner it was confusing to see PORTB not declared and no results came up on the internet.  
 
-![image](https://user-images.githubusercontent.com/59852573/110512918-aa62f980-80d3-11eb-993b-2ddc81c41b8b.png =100x50)
+![image](https://user-images.githubusercontent.com/59852573/110512918-aa62f980-80d3-11eb-993b-2ddc81c41b8b.png =100x)
 
 Despite how efficient it was, the Nano 33 IoT was faster and the code could be simplified.
 ```c++
