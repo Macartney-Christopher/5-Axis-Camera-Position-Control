@@ -51,11 +51,7 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
 	data[1] = (arr[0] >> 8) & 0xFF; //Gets the most significant byte
 	data[2] = arr[0] & 0xFF; //Gets the second most significant byte
 	data[3] = (arr[1] >> 8) & 0xFF;
-	data[4] = arr[1] & 0xFF;
-	data[5] = (arr[2] >> 8) & 0xFF;
-	data[6] = arr[2] & 0xFF; 
-	data[7] = (arr[3] >> 8) & 0xFF;
-	data[8] = arr[3] & 0xFF;
+	....
 	data[9] = (arr[4] >> 8) & 0xFF;
 	data[10] = arr[4] & 0xFF; //Gets the least significant byte
 
@@ -65,8 +61,7 @@ On the receiving end, in Arduino, the native code takes in the information by sh
 ```c++
     int sliderStepSpeed = (Serial.read() << 8) + Serial.read(); 
     int panStepSpeed = (Serial.read() << 8) + Serial.read(); 
-    int tiltStepSpeed = (Serial.read() << 8) + Serial.read();
-    int focusStepSpeed = (Serial.read() << 8) + Serial.read();
+    ...
     int zoomStepSpeed = (Serial.read() << 8) + Serial.read();
 ```       
 The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. 
