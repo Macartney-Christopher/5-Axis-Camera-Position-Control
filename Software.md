@@ -3,20 +3,20 @@
 ## Getting Familiar
 In total there are over 2000 lines of code. I found the best way to approach it was to get familiar with each library and then the functions in the code.
 The AccelStepper and MultiStepper libraries are complimentary, often one will be used with the other.
-INSERT SCREENSHOT OF CODE
+
 
 
 ## EEPROM & FlashStorage
 When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there was a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
-
+FlashStorage ended up being more reliable. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
 ## Adding 2 Stepper Motors
-When initializing the 2 additional motors in the code using AccelStepper I had to make sure none of the other functions were affected. This involved going through every function and increasing data arrays, modifying function inputs/outputs, and adding functions and variables .
-It was simple to implement the functions and variables because they followed the same structure as the native code. Ensuring the initial value for the variables required a lot of empirical testing based on visual results of the motor actuation.
-I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position found by hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section. Otherwise the two additional motors would continuously rotate.
+When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables .
+It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial value for the variables requires a lot of empirical testing based on visual results of the motor actuation.
+I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section or else the two additional motors would continuously rotate.
 
 ## Driving CPU Port Directly
-Isaac879's implements a function that drives the microcontroller directly.
+[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly.
 
 #### Arduino Nano Microcontroller Ports
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
