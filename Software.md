@@ -3,22 +3,23 @@
 ## Getting Familiar
 &nbsp;&nbsp;&nbsp;In total there are over 2000 lines of code. The best way to approach it is to get familiar with each library and then the functions in the code.
 The AccelStepper and MultiStepper libraries are complimentary, often one will be used with the other. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM but was replaced by FlashStorage
+## Obstacles
 
-## EEPROM & FlashStorage
+### EEPROM & FlashStorage
 &nbsp;&nbsp;&nbsp;When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there was a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
 FlashStorage ended up being more reliable. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
-## Adding 2 Stepper Motors
+### Adding 2 Stepper Motors
 &nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables.
 
 &nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial value for the variables requires a lot of empirical testing based on visual results of the motor actuation.
 
 &nbsp;&nbsp;&nbsp;I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section or else the two additional motors would continuously rotate.
 
-## Driving CPU Port Directly
+### Driving CPU Port Directly
 &nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly.
 
-#### Arduino Nano Microcontroller Ports
+##### Arduino Nano Microcontroller Ports
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
 &nbsp;&nbsp;&nbsp;For a beginner it is confusing to see PORTB undeclared and no immediate results come up on the internet:
 ```c++
@@ -39,7 +40,7 @@ if(newMode == HALF_STEP){
 ```
 &nbsp;&nbsp;&nbsp;Here isaac879 uses the microcontroller ports directly. As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it was for the regular Nano, the Nano 33 IoT was faster and the code could be simplified.
 
-## Bit Manipulation - Bluetooth Implementation
+### Bit Manipulation - Bluetooth Implementation
 &nbsp;&nbsp;&nbsp;Sending the commands from the controller involve sending a character array. The information is allocated in the array like the following:
 ```c++
 int sendSliderPanTiltStepSpeed(int command, short* arr) {
