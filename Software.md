@@ -41,4 +41,32 @@ Here isaac879 uses the microcontroller ports directly. As seen above, there are 
 Despite how efficient it was for the regular Nano, the Nano 33 IoT was faster and the code could be simplified.
 
 
-## Bit Manipulation
+## Bit Manipulation - Bluetooth Implementation
+Sending the commands from the controller involve sending a character array. The information is allocated in the array like the following:
+```c++
+int sendSliderPanTiltStepSpeed(int command, short* arr) {
+	char data[11]; //Data array to send
+
+	data[0] = command;
+	data[1] = (arr[0] >> 8) & 0xFF; //Gets the most significant byte
+	data[2] = arr[0] & 0xFF; //Gets the second most significant byte
+	data[3] = (arr[1] >> 8) & 0xFF;
+	data[4] = arr[1] & 0xFF;
+	data[5] = (arr[2] >> 8) & 0xFF;
+	data[6] = arr[2] & 0xFF; 
+	data[7] = (arr[3] >> 8) & 0xFF;
+	data[8] = arr[3] & 0xFF;
+	data[9] = (arr[4] >> 8) & 0xFF;
+	data[10] = arr[4] & 0xFF; //Gets the least significant byte
+
+	serialWrite(data, sizeof(data)); //Send the command and the 10 bytes of data
+```
+On the receiving end, in Arduino, the native code takes in the information by shifting 8 bits at a time:
+```c++
+    int sliderStepSpeed = (Serial.read() << 8) + Serial.read(); 
+    int panStepSpeed = (Serial.read() << 8) + Serial.read(); 
+    int tiltStepSpeed = (Serial.read() << 8) + Serial.read();
+    int focusStepSpeed = (Serial.read() << 8) + Serial.read();
+    int zoomStepSpeed = (Serial.read() << 8) + Serial.read();
+```       
+The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. 
