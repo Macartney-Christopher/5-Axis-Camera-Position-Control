@@ -7,6 +7,7 @@ INSERT SCREENSHOT OF CODE
 
 
 ## EEPROM & FlashStorage
+When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there was a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
 
 
 ## Adding 2 Stepper Motors
