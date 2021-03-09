@@ -15,9 +15,30 @@ It was simple to implement the functions and variables because they followed the
 I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position found by hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section. Otherwise the two additional motors would continuously rotate.
 
 ## Driving CPU Port Directly
-Isaac879's implements a function that drives the microcontroller directly. Despite how efficient it was, the Nano 33 IoT was faster and the code could be simplified.
-![image](https://user-images.githubusercontent.com/59852573/110512443-332d6580-80d3-11eb-8be2-3b00ec9f609d.png)
+Isaac879's implements a function that drives the microcontroller directly. For a beginner it was confusing to see PORTB not declared and no results came up on the internet.  
+
+![image](https://user-images.githubusercontent.com/59852573/110512918-aa62f980-80d3-11eb-993b-2ddc81c41b8b.png =100x50)
+
+Despite how efficient it was, the Nano 33 IoT was faster and the code could be simplified.
+```c++
+if(newMode == HALF_STEP){
+        PORTB |=   B00001000; //MS1 high
+        PORTB &= ~(B00000100); //MS2 low 
+    }
+    else if(newMode == QUARTER_STEP){
+        PORTB |=   B00000100; //MS2 high
+        PORTB &= ~(B00001000); //MS1 low
+    }
+    else if(newMode == EIGHTH_STEP){
+        PORTB &= ~(B00001100); //MS1 and MS2 low
+    }
+    else if(newMode == SIXTEENTH_STEP){
+        PORTB |= B00001100; //MS1 and MS2 high
+    }
+```
+
 ### Arduino Nano Microcontroller Ports 
+
 PORTB
 
 ## Bit Manipulation
