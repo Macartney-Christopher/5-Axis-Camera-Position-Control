@@ -3,9 +3,9 @@
   Before reading through the rest of the repo it is strongly suggested to look at [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s original work on this project.
 
 ## Table of Contents
-### 1. [Mechanical Design](Mechanical.md)
-### 2. [Hardware Design](Hardware.md)
-### 3. [Software Design](Software.md)
+### 1. [Mechanical Design](Design-Breakdown/Mechanical.md)
+### 2. [Hardware Design](Design-Breakdown/Hardware.md)
+### 3. [Software Design](Design-Breakdown/Software.md)
 
 ## Setup
 1. Install Arduino IDE
