@@ -15,7 +15,7 @@ Use Universal G-Code Sender with the CNC Shield to rapidly and realistically sim
 5. You're done!
  
 #### Problem 
-Using UGS for the camera position control is not ideal because entering the G commands manually is tedious. The issue is that the three core motors don't move the body in cartesian axes. Two motors rotate the body around its center and one moves along the x axis. Moreover, the two motors also have a gear ratios which don't represent the rotation of the body 1:1 with the motors. 
+&nbsp;&nbsp;&nbsp;Using UGS for the camera position control is not ideal because entering the G commands manually is tedious. The issue is that the three core motors don't move the body in cartesian axes. Two motors rotate the body around its center and one moves along the x axis. Moreover, the two motors also have a gear ratios which don't represent the rotation of the body 1:1 with the motors. 
 
 #### Solution
 1. Draw what the motors would do in cartesian coordinates and convert to G commands.
@@ -32,6 +32,7 @@ Using UGS for the camera position control is not ideal because entering the G co
 
 ##### Soldering
 &nbsp;&nbsp;&nbsp;The only challenge wben soldering is keeping the headers in the upright position while soldering on the opposite side. Additionally, this project upgrade counts 3x hall sensors wired to headers, 8x 7-10cm F-F wires, and 2x 7-10cm F-F split wires.
+
 ### Nano Compatibility
 #### Using an Arduino Nano 
 &nbsp;&nbsp;&nbsp;Isaac879 uses almost the entire static and dynamic memory available on an Arduino Nano to complete his project. The PCB worked when adding the Nano to the PCB and uploading isaac879's original code.
@@ -63,6 +64,7 @@ Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only
 ### Modifying the PCB
 &nbsp;&nbsp;&nbsp;*Note: To implement the two additional steppers the camera shutter trigger function must be sacrificed to use its digital pinout.*
 &nbsp;&nbsp;&nbsp;***Suggestion: To not lose the camera trigger function and make the setup cleaner it is suggested to improve on the PCB design and simply order it with the correct modifications as explained below.***
+
 &nbsp;&nbsp;&nbsp;The first step to implement the additional stepper motors is to solder male headers on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the pCB but soldering a wire with a female end straight underneath the Nano header works just as well. 
 Secondly, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistance is not part of the circuit at all or it will affect the digital signal to the stepper motor.
 
