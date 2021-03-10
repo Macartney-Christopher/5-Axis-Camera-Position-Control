@@ -14,7 +14,8 @@
       -	Possibility of camera rotation (mitigated by tightness 
 
     #### Design 2 outweighed Design 1
-    ![image](https://user-images.githubusercontent.com/59852573/110356542-5e974e00-8008-11eb-9604-2b08a7cf43be.png)
+ <img src="https://user-images.githubusercontent.com/59852573/110705766-d8743680-81c4-11eb-9c58-b186b4b31b31.png" alt="drawing" width="500"/>
+)
 ## Slider Mount Tightening
   - Design 1: Spring Loaded Wheel Shaft (4 wheels total)
     - Motive: Consistent Fitment to Rail 
@@ -29,7 +30,7 @@
       -	3D printable
 
     #### Design 2 outweighed Design 1
-    <img src="https://user-images.githubusercontent.com/59852573/110356542-5e974e00-8008-11eb-9604-2b08a7cf43be.png" alt="drawing" width="400"/>
+    <img src="https://user-images.githubusercontent.com/59852573/110356542-5e974e00-8008-11eb-9604-2b08a7cf43be.png" alt="drawing" width="500"/>
 ## Additional Stepper Motors - Focus & Zoom Control
   - Design 1: Motors attached on the camera mount and adjustable
     - Motive: Fixed on the path of the camera
@@ -44,4 +45,4 @@
       -	Gravity helps prevent any skipping of the gears because they are above the lens
 
 	  #### Design 2 outweighed Design 1
-	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="400"/>
+	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
