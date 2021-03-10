@@ -2,12 +2,12 @@
 
 ## Getting Familiar
 &nbsp;&nbsp;&nbsp;In total there are over 2000 lines of code. The best way to approach it is to get familiar with each library and then the functions in the code.
-The AccelStepper and MultiStepper libraries are complimentary, often one used together. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM but was replaced by FlashStorage
+The AccelStepper and MultiStepper libraries are complimentary, often one used together. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM to store values while the system is off.
 
 ## Obstacles
 ### EEPROM & FlashStorage
-&nbsp;&nbsp;&nbsp;When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there was a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
-FlashStorage ended up being more reliable. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
+&nbsp;&nbsp;&nbsp;When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there's a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
+FlashStorage is more reliable than EEPROM. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
 ### Adding 2 Stepper Motors
 &nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables.
