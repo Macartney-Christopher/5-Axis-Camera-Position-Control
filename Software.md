@@ -10,18 +10,18 @@ The AccelStepper and MultiStepper libraries are complimentary, often one used to
 FlashStorage is more reliable than EEPROM. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
 ### Adding 2 Stepper Motors
-&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper I made sure none of the other functions were affected. I went through each function to increase data arrays, modify function inputs/outputs, and add functions and variables.
+&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper ensure the other functions are not affected. Each function is modified by increasing data arrays, modifying function inputs/outputs, and adding functions and variables.
 
-&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial value for the variables requires a lot of empirical testing based on visual results of the motor actuation.
+&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial values are correct for the system's parameters requires a lot of empirical testing based on visual results of the motor actuation.
 
-&nbsp;&nbsp;&nbsp;I was careful when increasing the arrays and the function inputs. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` I didn't include them with the hall sensing section or else the two additional motors would continuously rotate.
+&nbsp;&nbsp;&nbsp;Increasing the arrays and the function inputs can cause other issues in the call sequence. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` they weren't included with the hall sensing section or else the two additional motors would continuously rotate attempting to find a home position.
 
 ### Driving CPU Port Directly
-&nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly.
+&nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly to set the step mode on their TMC2208 drivers.
 
 ##### Arduino Nano Microcontroller Ports
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
-&nbsp;&nbsp;&nbsp;For a beginner it is confusing to see PORTB undeclared and no immediate results come up on the internet:
+&nbsp;&nbsp;&nbsp;As shown below, PORTB is used yet undeclared in the entire code. Moreover, no results come up when searching for PORTB.
 
 ```c++
 if(newMode == HALF_STEP){
@@ -39,10 +39,10 @@ if(newMode == HALF_STEP){
         PORTB |= B00001100; //MS1 and MS2 high
     }
 ```
-&nbsp;&nbsp;&nbsp;Here isaac879 uses the microcontroller ports directly. As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it was for the regular Nano, the Nano 33 IoT was faster and the code could be simplified.
+&nbsp;&nbsp;&nbsp;Here, isaac879 uses the microcontroller ports directly. As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
 
 ### Bit Manipulation - Bluetooth Implementation
-&nbsp;&nbsp;&nbsp;Sending the commands from the controller involve sending a character array. The information is allocated in the array like the following:
+&nbsp;&nbsp;&nbsp;Sending the commands from the controller involves sending a character array. The information is allocated in the array like the following:
 ```c++
 int sendSliderPanTiltStepSpeed(int command, short* arr) {
 	char data[11]; //Data array to send
@@ -64,4 +64,4 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
     ...
     int zoomStepSpeed = (Serial.read() << 8) + Serial.read();
 ```       
-&nbsp;&nbsp;&nbsp;The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. 
+&nbsp;&nbsp;&nbsp;The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. That would be due to the Nano 33 IoT being configured slightly differently than the Nano.
