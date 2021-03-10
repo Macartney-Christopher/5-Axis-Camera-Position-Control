@@ -47,7 +47,7 @@ Use Universal G-Code Sender with the CNC Shield to rapidly and realistically sim
 &nbsp;&nbsp;&nbsp;With the Arduino Nano 33 BLE there's plenty of memory to initialize all five stepper motors. The integrated bluetooth on the Nano 33 BLE makes the Bluetooth header on the PCB available.
 
 ##### Problem
-&nbsp;&nbsp;&nbsp; An architecture error comes up, when changing the EEPROM to FlashStorage:
+&nbsp;&nbsp;&nbsp; An architecture error comes up when changing the EEPROM to FlashStorage:
 ![image](https://user-images.githubusercontent.com/59852573/110384195-4edd3100-802b-11eb-953d-3ee4fa40a7a4.png)
 The architecture of the CPU is not compatible with FlashStorage library. The workarounds with the same board are complex and require extensive knowledge of CPU architecture.
 
