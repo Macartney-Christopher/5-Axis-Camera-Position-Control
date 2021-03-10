@@ -1,13 +1,13 @@
 # Mechanical
 ## Adaptable mount to most DSLR cameras and lenses
   - Design 1: Extendable Camera Mount
-    -Motive: Possibility that a camera will not fit
+    - Motive: Possibility that a camera will not fit
       - Allows a snug fit for any camera
       -	Reduces possibility for camera to rotate on center screw
       -	Required additional sliding mechanisms
       -	Involved too little rigidity in the system
   - Design 2: Freedom of Screw Position & Larger Mount
-    -Motive: Not enough options for camera position
+    - Motive: Not enough options for camera position
       -	Allows fit for all current and future DSLRs
       -	Allows for lateral and longitudinal positioning of camera
       -	Allows for optimal position of center of mass
