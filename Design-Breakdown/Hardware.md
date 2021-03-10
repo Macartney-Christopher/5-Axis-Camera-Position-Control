@@ -73,3 +73,17 @@ Wire from Nano 3.3V to P2 5V
 Cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
 
 had to sacrifice the camera shutter trigger function to use the pinout
+
+## Connecting a Gaming Controller
+&nbsp;&nbsp;&nbsp;The use of a gaming controller to control the system is a great addition. Issac879 uses an Xbox controller although there didn't seem to be an issue with using any other standard remote.
+### Problem
+&nbsp;&nbsp;&nbsp;After some attemps the serial port would not recognize any remote, whether it was USB or Bluetooth. All controllers used to use DirectInput to communicate games and programs. Windows then created XInput for so only Xbox controllers could be used with Xbox. 
+&nbsp;&nbsp;&nbsp;Isaac879 uses XInput to connect the Xbox controller to the camera system which meant that the serial port issue was due to the controller not being Xbox. Either the code or the controller had to be changed. 
+
+### Solution
+#### Solution 1: 
+&nbsp;&nbsp;&nbsp;By using an application called MogaSerial, the Moga Pro 2 on-hand acted as an XInput controller. It worked great for a couple days. Unfortunately, in February 2021, MogaSerial is still inconsistent and does not always connect to the Moga Pro 2. Despite the program not being supported by Windows, the maker [Zel-oz](https://github.com/Zel-os/MogaSerial) is still improving it.
+#### Solution 2: 
+&nbsp;&nbsp;&nbsp;Modifying the code to use DirectInput is the ideal solution but it is a complex task for any individual unfamiliar with this old Microsoft API.
+#### Solution 3:
+&nbsp;&nbsp;&nbsp;For reliability and timing it is better to purchase an Xbox controller if any of the previous solutions don't work but try them!
