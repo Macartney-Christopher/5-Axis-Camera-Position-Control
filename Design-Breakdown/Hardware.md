@@ -1,28 +1,27 @@
 # Hardware
 
-&nbsp;&nbsp;&nbsp;The final objective for the Camera is to control it via Bluetooth with the given code using the custom PCB.
-
+&nbsp;&nbsp;&nbsp;The final objective for the Camera is to control it via Bluetooth with the given code using the custom PCB. Keep in mind that this report is from a maker who didn't know what a stepper motor was before starting the project.
 
 ## CNC Shield: Driving Steppers Directly
 
-&nbsp;&nbsp;&nbsp;With the mechanical parts fully assembled, the Camera system needed to be tested. Before this project I never touched a stepper motor. To mitigate any issues that could arise from code and wiring, I chose to drive the stepper directly using a CNC Shield through Arduino. [Find code here](CNC_Shield_Direct_Drive.ino).
+&nbsp;&nbsp;&nbsp;With the mechanical parts fully assembled, the camera system needed to be tested. Driving the steppers directly using a CNC Shield through Arduino mitigates any issues that could arise from code and wiring. [Find code here](Iteration-Code/CNC_Shield_Direct_Drive.ino).
 
 ## CNC Shield: Driving Steppers with Universal G-Code Sender (UGS)
-To realistically simulate the controls of the steppers I chose to use Universal G-Code Sender with the CNC Shield. 
+Use Universal G-Code Sender with the CNC Shield to rapidly and realistically simulate the controls of the steppers. 
 1. Upload Grbl source code to the Arduino Uno [here on Github](https://github.com/grbl/grbl/blob/master/grbl/examples/grblUpload/grblUpload.ino).
 2. Download Universal G-Code Sender and connect your Arduino Uno.
 3. Setup stepper motors and drivers to CNC shield.
 4. Press connect on the top corner and ensure the Arduino Uno is connected.
-5. Begin messing around.
+5. You're done!
  
 #### Problem 
-Using UGS for the camera position control was not ideal because I had to enter the G commands manually everytime. It is an issue because the three core motors don't move the body in cartesian axes. Two motors rotate the body on its own axes and one moves along the x axis. Moreover, the two motors also have a gear ratio which don't represent the rotation of the body 1:1 with the motors. 
+Using UGS for the camera position control is not ideal because entering the G commands manually is tedious. The issue is that the three core motors don't move the body in cartesian axes. Two motors rotate the body around its center and one moves along the x axis. Moreover, the two motors also have a gear ratios which don't represent the rotation of the body 1:1 with the motors. 
 
 #### Solution
 1. Draw what the motors would do in cartesian coordinates and convert to G commands.
-	This is an interesting idea because the user could visually see the sequence of motor actuation. The biggest issue is being able to constantly convert to cartesions as the user draws on two of three axes. 
+	This is an interesting idea because the user could visually see the sequence of motor actuation. The biggest issue is being able to constantly convert to cartesian coordinates as the user draws on two of three axes. 
 2. Write code to enter the desired angles of the camera and output the G commands.
-	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](GCode_Maker.cs).
+	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](Iteration-Code/GCode_Maker.cs).
 
 &nbsp;&nbsp;&nbsp;The C# program asks for angle of tilting and panning, and the distance of slider travel. It gives in return two G commands, the first to set the initial position and the second to execute the desired move.
 [Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
@@ -32,47 +31,46 @@ Using UGS for the camera position control was not ideal because I had to enter t
 *Note: The final objective is to have five total stepper motors, two more than what the PCB accounts for.*
 
 ##### Soldering
-&nbsp;&nbsp;&nbsp;The only challenge wben soldering is keeping the headers in the upright position while soldering on the opposite side. This project upgrade accounts 3x hall sensors wired to headers, 8x 7-10cm M-M wires, and 2x 7-10cm M-M split wires.
+&nbsp;&nbsp;&nbsp;The only challenge wben soldering is keeping the headers in the upright position while soldering on the opposite side. Additionally, this project upgrade counts 3x hall sensors wired to headers, 8x 7-10cm F-F wires, and 2x 7-10cm F-F split wires.
 ### Nano Compatibility
 #### Using an Arduino Nano 
-&nbsp;&nbsp;&nbsp;Isaac879 uses the just about the entire static and dynamic memory available on an Arduino Nano to complete his project. The PCB worked when adding the Nano to the PCB and uploading isaac879's original code.
+&nbsp;&nbsp;&nbsp;Isaac879 uses almost the entire static and dynamic memory available on an Arduino Nano to complete his project. The PCB worked when adding the Nano to the PCB and uploading isaac879's original code.
 
 ##### Problem
-&nbsp;&nbsp;&nbsp;Initializing the two additional steppers with AccelStepper quickly took up memory in the Nano. The code took 107% capacity only with initilization. Removing functions that were not critical, such as all that would operate the camera shutter, was still not enough. An alternative board was necessary.
+&nbsp;&nbsp;&nbsp;Initializing the two additional steppers with AccelStepper quickly take up memory in the Nano. The code takes up 107% capacity only with initilization. Removing functions that are not critical, such as all that operate the camera shutter, is still not enough. An alternative board is necessary.
 
 ##### Solution
-&nbsp;&nbsp;&nbsp;The Arduino Nano 33 BLE to solves the memory issue. Moreover, the board had CPU Flash Memory which replaces the EEPROM.
+&nbsp;&nbsp;&nbsp;The Arduino Nano 33 BLE solves the memory issue. Moreover, the board has CPU Flash Memory which replaces the EEPROM.
 
 #### Using an Arduino Nano 33 BLE
-&nbsp;&nbsp;&nbsp;With the Arduino Nano 33 BLE there's plenty of memory to initialize all five stepper motors. The integrated bluetooth on this Nano made the Bluetooth header on the PCB available.
+&nbsp;&nbsp;&nbsp;With the Arduino Nano 33 BLE there's plenty of memory to initialize all five stepper motors. The integrated bluetooth on the Nano 33 BLE makes the Bluetooth header on the PCB available.
 
 ##### Problem
-&nbsp;&nbsp;&nbsp;When changing the EEPROM code to Flash Storage the same an architecture error came up:
+&nbsp;&nbsp;&nbsp; An architecture error comes up, when changing the EEPROM to FlashStorage:
 ![image](https://user-images.githubusercontent.com/59852573/110384195-4edd3100-802b-11eb-953d-3ee4fa40a7a4.png)
-The architecture of the CPU is not compatible with FlashStorage library. The workarounds with the same board aer complex and require extensive knowledge of CPU architecture.
+The architecture of the CPU is not compatible with FlashStorage library. The workarounds with the same board are complex and require extensive knowledge of CPU architecture.
 
 ##### Solution
 &nbsp;&nbsp;&nbsp;Finally, the Arduino Nano 33 IoT doesn't present any compilation issues and worked great.
 
 #### Using an Arduino Nano 33 IoT
-&nbsp;&nbsp;&nbsp;With the Arduino Nano 33 IoT everything was compiling perfectly. There was enough memory and the correct architecture for the FlashStorage library.
+&nbsp;&nbsp;&nbsp;With the Arduino Nano 33 IoT everything compiles perfectly. There's enough memory and the correct architecture for the FlashStorage library.
 
 ### Finding PCB Pinouts
 &nbsp;&nbsp;&nbsp;Adding two more steppers is critical for the project. There are eight free pins on the PCB that can be used for digital signals: D0 (RX), D1 (TX), D2, D13, A1, A2, A6, and A7. Pins 0 and 1, and pin 2 on H1 belong to the camera trigger and a hall sensor respectively. The camera trigger is not necessary for this project, the fourth hall sensor does not add value to this project.
 Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only require four digital pins. The eight pins are perfect for the two small stepper motors.
 
 ### Modifying the PCB
+&nbsp;&nbsp;&nbsp;*Note: To implement the two additional steppers the camera shutter trigger function must be sacrificed to use its digital pinout.*
+&nbsp;&nbsp;&nbsp;***Suggestion: To not lose the camera trigger function and make the setup cleaner it is suggested to improve on the PCB design and simply order it with the correct modifications as explained below.***
+&nbsp;&nbsp;&nbsp;The first step to implement the additional stepper motors is to solder male headers on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the pCB but soldering a wire with a female end straight underneath the Nano header works just as well. 
+Secondly, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistance is not part of the circuit at all or it will affect the digital signal to the stepper motor.
 
-Finding the correct motors (not too big, not many pins, enough torque)
-Using free pinouts for two additional steppers (add screenshot of layout with available pins);
-Shorting R1
-Shorting A1 and removing R5
-Adding wires to small stepper drivers
+
 Wire from Nano Vin to H3 power
 Wire from Nano 3.3V to P2 5V
 Cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
-
-had to sacrifice the camera shutter trigger function to use the pinout
+Finally, connect the 7-10cm wires from the digital pinouts to the ULN2003 drivers and the two split wires from the PCB ground and power to the two drivers. The wiring should look like the below.
 
 ## Connecting a Gaming Controller
 &nbsp;&nbsp;&nbsp;The use of a gaming controller to control the system is a great addition. Issac879 uses an Xbox controller although there didn't seem to be an issue with using any other standard remote.
