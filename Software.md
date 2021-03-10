@@ -22,6 +22,7 @@ FlashStorage ended up being more reliable. If the Nano was reset then none of th
 ##### Arduino Nano Microcontroller Ports
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
 &nbsp;&nbsp;&nbsp;For a beginner it is confusing to see PORTB undeclared and no immediate results come up on the internet:
+
 ```c++
 if(newMode == HALF_STEP){
         PORTB |=   B00001000; //MS1 high
