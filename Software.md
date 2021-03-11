@@ -65,3 +65,28 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
     int zoomStepSpeed = (Serial.read() << 8) + Serial.read();
 ```       
 &nbsp;&nbsp;&nbsp;The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. That would be due to the Nano 33 IoT being configured slightly differently than the Nano.
+
+### Adding Multi-Button Functions
+Isaac879 can get the state of the Xbox Controller buttons using, for example:
+```c++
+if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON))
+```
+The above simply checks if the last button pressed corresponds to the Up button on the D-Pad.
+To add a multi-button function there  needs to be a toggle button which allows the user to use other buttons for different actions.
+Let us set the Y Button as the toggle button. When pressed we can switch a bool value:
+```c++
+if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //if Y Button is pressed
+	toggleButton = true;  					       //turn on the toggle feature
+}
+```
+Now, when the Up Button is pressed there is one of two functions that gets called depending on the value of ```toggleButton```.
+```c++
+if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && !toggleButton) { //when Y is NOT pressed
+...
+}
+```
+```c++
+if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleButton){ //when Y is pressed
+...
+}
+```
