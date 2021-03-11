@@ -84,8 +84,7 @@ Now, when the Up Button is pressed there is one of two functions that gets calle
 if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && !toggleButton) { //when Y is NOT pressed
 ...
 }
-```
-```c++
+
 if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleButton){ //when Y is pressed
 ...
 }
