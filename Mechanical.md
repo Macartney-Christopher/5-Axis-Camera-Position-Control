@@ -48,3 +48,6 @@
 
 	  #### Design 2 outweighed Design 1
 	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
+## Assembling In SolidWorks
+nsbp;nsbp;nsbp;w
+
