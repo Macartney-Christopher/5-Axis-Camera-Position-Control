@@ -49,5 +49,7 @@
 	  #### Design 2 outweighed Design 1
 	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
 ## Assembling In SolidWorks
-nsbp;nsbp;nsbp;w
+### Assembly
+&nbsp;&nbsp;&nbsp;When assembling mechanical parts it is to your advantage to include screws, nuts, and other ignored components. All CAD files for common pieces can be found on McMaster-Carr's website with many options. Ignoring to include the screws can lead to possible collisions with parts or even worse, a camera.
+For a project like this one it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing others.
 
