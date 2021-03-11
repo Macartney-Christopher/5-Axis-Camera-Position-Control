@@ -81,11 +81,11 @@ if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //if Y Bu
 ```
 Now, when the Up Button is pressed there is one of two functions that gets called depending on the value of ```toggleButton```.
 ```c++
-if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && !toggleButton) { //when Y is NOT pressed
+if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && !toggleButton) { //when Y is NOT pressed the Up Button calls this function
 ...
 }
 
-if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleButton){ //when Y is pressed
+if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleButton){ //when Y is pressed the Up Button calls this function
 ...
 }
 ```
