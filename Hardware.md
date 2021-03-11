@@ -31,14 +31,14 @@ Use Universal G-Code Sender with the CNC Shield to rapidly and realistically sim
 *Note: The final objective is to have five total stepper motors, two more than what the PCB accounts for.*
 
 ##### Soldering
-&nbsp;&nbsp;&nbsp;The only challenge wben soldering is keeping the headers in the upright position while soldering on the opposite side. Additionally, this project upgrade counts 3x hall sensors wired to headers, 8x 7-10cm F-F wires, and 2x 7-10cm F-F split wires.
+&nbsp;&nbsp;&nbsp;The only challenge is keeping the headers in the upright position while soldering on the opposite side. Additionally, this project upgrade counts 3x hall sensors wired to headers, 8x 7-10cm F-F wires, and 2x 7-10cm F-F split wires.
 
 ### Nano Compatibility
 #### Using an Arduino Nano 
 &nbsp;&nbsp;&nbsp;Isaac879 uses almost the entire static and dynamic memory available on an Arduino Nano to complete his project. The PCB worked when adding the Nano to the PCB and uploading isaac879's original code.
 
 ##### Problem
-&nbsp;&nbsp;&nbsp;Initializing the two additional steppers with AccelStepper quickly take up memory in the Nano. The code takes up 107% capacity only with initilization. Removing functions that are not critical, such as all that operate the camera shutter, is still not enough. An alternative board is necessary.
+&nbsp;&nbsp;&nbsp;Initializing the two additional steppers with AccelStepper quickly takes up memory in the Nano. The code takes up 107% capacity only with initilization. Removing functions that are not critical, such as all that operate the camera shutter, is still not enough. An alternative board is necessary.
 
 ##### Solution
 &nbsp;&nbsp;&nbsp;The Arduino Nano 33 BLE solves the memory issue. Moreover, the board has CPU Flash Memory which replaces the EEPROM.
@@ -65,14 +65,13 @@ Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only
 &nbsp;&nbsp;&nbsp;*Note: To implement the two additional steppers the camera shutter trigger function must be sacrificed to use its digital pinout.*
 &nbsp;&nbsp;&nbsp;***Suggestion: To not lose the camera trigger function and make the setup cleaner it is suggested to improve on the PCB design and simply order it with the correct modifications as explained below.***
 
-&nbsp;&nbsp;&nbsp;The first step to implement the additional stepper motors is to solder male headers on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the pCB but soldering a wire with a female end straight underneath the Nano header works just as well. 
-Secondly, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistance is not part of the circuit at all or it will affect the digital signal to the stepper motor.
+&nbsp;&nbsp;&nbsp;The first step to implement the additional stepper motors is to solder male headers on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the PCB but soldering a wire with a female end straight underneath the Nano header works just as well. 
 
+&nbsp;&nbsp;&nbsp;Secondly, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistance is not part of the circuit at all or it will affect the digital signal to the stepper motor.
 
-Wire from Nano Vin to H3 power
-Wire from Nano 3.3V to P2 5V
-Cutting 5V supply from H1 through the P1 because the nano 33 iot can only output 3.3V. Short 5V supply  to H1
-Finally, connect the 7-10cm wires from the digital pinouts to the ULN2003 drivers and the two split wires from the PCB ground and power to the two drivers. The wiring should look like the below.
+&nbsp;&nbsp;&nbsp;The Nano 33 IoT only supplies 3.3V as opposed to 5V for the Nano. To supply enough power to the hall sensor on H1 cut with an knife the line to the 5V through-hole on H1. Then proceed to short from Vin on the Nano header to the 5V through-hole on H1.
+
+&nbsp;&nbsp;&nbsp;Finally, connect the 7-10cm wires from the digital pinouts to the ULN2003 drivers and the two split wires from the PCB ground and power to the two drivers. The wiring should look like the below.
 
 ## Connecting a Gaming Controller
 &nbsp;&nbsp;&nbsp;The use of a gaming controller to control the system is a great addition. Issac879 uses an Xbox controller although there didn't seem to be an issue with using any other standard remote.
