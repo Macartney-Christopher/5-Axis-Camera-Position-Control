@@ -63,7 +63,8 @@ Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only
 
 ### Modifying the PCB
 &nbsp;&nbsp;&nbsp;*Note: To implement the two additional steppers the camera shutter trigger function must be sacrificed to use its digital pinout.*<br/>
-&nbsp;&nbsp;&nbsp;***Suggestion: To not lose the camera trigger function and make the setup cleaner it is suggested to improve on the PCB design and simply order it with the correct modifications as explained below.***<br/>
+&nbsp;&nbsp;&nbsp;***Suggestion: To not lose the camera trigger function and make the setup cleaner it is suggested to improve on the PCB design and simply order it with the correct modifications as explained below.***
+
 &nbsp;&nbsp;&nbsp;The first step to implement the additional stepper motors is to solder male headers on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the PCB but soldering a wire with a female end straight underneath the Nano header works just as well. <br/>
 &nbsp;&nbsp;&nbsp;Secondly, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistance is not part of the circuit at all or it will affect the digital signal to the stepper motor.  
 &nbsp;&nbsp;&nbsp;The Nano 33 IoT only supplies 3.3V as opposed to 5V for the Nano. To supply enough power to the hall sensor on H1 cut with an knife the line to the 5V through-hole on H1. Then proceed to short from Vin on the Nano header to the 5V through-hole on H1.  
