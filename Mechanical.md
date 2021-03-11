@@ -50,7 +50,7 @@
 	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
 	  
 ## 3D Printing Material
-&nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another in flexible, there was no significant change to the video. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:
+&nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another in flexible, there was no significant change to the video. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:<br/>
 <img src="https://user-images.githubusercontent.com/59852573/110848820-7e36ac80-827c-11eb-80bb-a8386c81696d.png" alt="drawing" width="500"/>
 
 ## Assembling In SolidWorks
