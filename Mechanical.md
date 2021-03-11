@@ -1,5 +1,6 @@
 # Mechanical
- <img src="https://user-images.githubusercontent.com/59852573/110846439-c56f6e00-8279-11eb-8cbb-bc9322274448.png" alt="drawing" width="700"/><br/>
+ <img src="https://user-images.githubusercontent.com/59852573/110846765-2b5bf580-827a-11eb-8e9b-114efb49807e.png" alt="drawing" width="850"/><br/>
+
 ## Camera Mount Adaptability
   - Design 1: Extendable Camera Mount
     - Motive: Possibility that a camera will not fit
