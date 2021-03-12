@@ -4,9 +4,9 @@
 Go see the final product in action on YouTube [here](https://www.youtube.com/watch?v=kPsWlgf-iiQ)!
 
 ## Table of Contents
-### 1. [Mechanical Design](Design-Breakdown/Mechanical.md)
-### 2. [Hardware Design](Design-Breakdown/Hardware.md)
-### 3. [Software Design](Design-Breakdown/Software.md)
+### 1. [Mechanical Design](Mechanical.md)
+### 2. [Hardware Design](Hardware.md)
+### 3. [Software Design](Software.md)
 
 ## Setup
 1. Install Arduino IDE
