@@ -1,6 +1,6 @@
 # Hardware
 
-&nbsp;&nbsp;&nbsp;The final objective for the Camera is to control it via Bluetooth with the given code using the custom PCB. Keep in mind that this report is from a maker who didn't know what a stepper motor was before starting the project.
+&nbsp;&nbsp;&nbsp;The final objective for the camera is to control it via Bluetooth with the given code using the custom PCB. Keep in mind that this report is from a maker who didn't know what a stepper motor was before starting the project.
 
 ## CNC Shield: Driving Steppers Directly
 
