@@ -21,8 +21,6 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 5. Open the and compile the Bluetooth code on C++ compiler
 6. Enjoy!
 
-INCLUDE VIDEO OF PROJECT IN ACTION
-
 ## Credits
   The mechanical, hardware, and software design is an adapted version of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
 ## License
