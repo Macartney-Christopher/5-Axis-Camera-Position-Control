@@ -17,7 +17,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
 
 ### Without Gaming Controller
-1. Compile the Arduino code [here](Gaming_Controller/Xbox_Control.cpp) 
+1. Compile the Arduino code [here](FlashStorage_PanTiltMount/FlashStorage_PanTiltMount.ino) 
 3. Ensure all cables are connected
 4. Compile and execute
 5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
