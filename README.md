@@ -20,7 +20,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 1. Compile the Arduino code [here](FlashStorage_PanTiltMount/FlashStorage_PanTiltMount.ino) 
 3. Ensure all cables are connected
 4. Compile and execute
-5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
+5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/3-Axis Slider Commands List.pdf)
 
 ## Installation & Build
 1. Install Arduino IDE
