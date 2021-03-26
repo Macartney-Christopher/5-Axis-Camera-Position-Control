@@ -9,6 +9,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 ### 3. [Software Design](Software.md)
 
 ## Setup
+### Once the system is built:
 1. Download the code to use the gaming controller here
 2. Create .txt file with the correct port
 3. Ensure all cables are connected
