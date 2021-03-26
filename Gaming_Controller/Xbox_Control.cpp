@@ -55,6 +55,8 @@ using namespace std;
 //triggers are 8 bit
 //analogsticks are 16bit
 
+bool toggleButton = false; //for multi-button functions
+
 long maxPanStepSpeed = MAXIMUM_PAN_STEP_SPEED;
 long maxTiltStepSpeed = MAXIMUM_TILT_STEP_SPEED;
 long maxSliderStepSpeed = MAXIMUM_SLIDER_STEP_SPEED;
@@ -237,13 +239,6 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
 	data[9] = (arr[4] >> 8) & 0xFF;
 	data[10] = arr[4] & 0xFF; //Gets the least significant byte
 
-	//printf("data1: %x \n", data[1]);
-	//printf("data2: %x \n", data[2]);
-	//printf("data3: %x \n", data[3]);
-	//printf("data4: %x \n", data[4]);
-	//printf("data5: %x \n", data[5]);
-	//printf("data6: %x \n", data[6]);
-
 	serialWrite(data, sizeof(data)); //Send the command and the 10 bytes of data
 
 	return 0;
@@ -374,54 +369,51 @@ int main(void) {
 					sendSliderPanTiltStepSpeed(INSTRUCTION_BYTES_SLIDER_PAN_TILT_SPEED, shortVals); //send the combined values
 					Sleep(10);
 
-					bool toggleButton = false;
+					
 
 					if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //increase speed of pan, tilt, slider by 100 steps
 						toggleButton = true; //this prevents the UP_BUTTON from activating on its own
-						if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON)) {
-							maxPanStepSpeed += 0.1 * MAXIMUM_PAN_STEP_SPEED;
-							maxTiltStepSpeed += 0.1 * MAXIMUM_TILT_STEP_SPEED;
-							maxSliderStepSpeed += 0.1 * MAXIMUM_SLIDER_STEP_SPEED;
-							string panSpeed = "s" + to_string(maxPanStepSpeed);
-							string tiltSpeed = "S" + to_string(maxTiltStepSpeed);
-							string sliderSpeed = "X" + to_string(maxSliderStepSpeed);
-							char* panSpeedCommand = &panSpeed[0];
-							char* tiltSpeedCommand = &tiltSpeed[0];
-							char* sliderSpeedCommand = &sliderSpeed[0];
-							printf("Pan speed increase by 10%.\n");
-							sendCharArray(panSpeedCommand);
-							printf("Tilt speed increase by 10%.\n");
-							sendCharArray(tiltSpeedCommand);
-							printf("Slider speed increase by 10%.\n");
-							sendCharArray(sliderSpeedCommand);
-
-							toggleButton = false; //resetting the toggle to off
-						}
 					}
+					if ((lastwButtons & DOWN_BUTTON) < (state.Gamepad.wButtons & DOWN_BUTTON) && toggleButton) {
+						maxPanStepSpeed -= 0.1 * MAXIMUM_PAN_STEP_SPEED;
+						maxTiltStepSpeed -= 0.1 * MAXIMUM_TILT_STEP_SPEED;
+						maxSliderStepSpeed -= 0.1 * MAXIMUM_SLIDER_STEP_SPEED;
+						string panSpeed = "s" + to_string(maxPanStepSpeed);
+						string tiltSpeed = "S" + to_string(maxTiltStepSpeed);
+						string sliderSpeed = "X" + to_string(maxSliderStepSpeed);
+						char* panSpeedCommand = &panSpeed[0];
+						char* tiltSpeedCommand = &tiltSpeed[0];
+						char* sliderSpeedCommand = &sliderSpeed[0];
+						printf("Pan speed decreased by 10%%.\n");
+						sendCharArray(panSpeedCommand);
+						printf("Tilt speed decreased by 10%%.\n");
+						sendCharArray(tiltSpeedCommand);
+						printf("Slider speed decreased by 10%%.\n");
+						sendCharArray(sliderSpeedCommand);
+						sendCharArray((char*)"m16");
 
-					if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //decrease speed of pan, tilt, slider by 100 steps
-						toggleButton = true; //this prevents the DOWN_BUTTON from activating on its own
-						if ((lastwButtons & DOWN_BUTTON) < (state.Gamepad.wButtons & DOWN_BUTTON)) {
-							maxPanStepSpeed -= 0.1 * MAXIMUM_PAN_STEP_SPEED;
-							maxTiltStepSpeed -= 0.1 * MAXIMUM_TILT_STEP_SPEED;
-							maxSliderStepSpeed -= 0.1 * MAXIMUM_SLIDER_STEP_SPEED;
-							string panSpeed = "s" + to_string(maxPanStepSpeed);
-							string tiltSpeed = "S" + to_string(maxTiltStepSpeed);
-							string sliderSpeed = "X" + to_string(maxSliderStepSpeed);
-							char* panSpeedCommand = &panSpeed[0];
-							char* tiltSpeedCommand = &tiltSpeed[0];
-							char* sliderSpeedCommand = &sliderSpeed[0];
-							printf("Pan speed decreased by 10%.\n");
-							sendCharArray(panSpeedCommand);
-							printf("Tilt speed decreased by 10%.\n");
-							sendCharArray(tiltSpeedCommand);
-							printf("Slider speed decreased by 10%.\n");
-							sendCharArray(sliderSpeedCommand);
-
-							toggleButton = false; //resetting the toggle to off
-						}
+						toggleButton = false; //resetting the toggle to off
 					}
-						
+					if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleButton) {
+						maxPanStepSpeed += 0.1 * MAXIMUM_PAN_STEP_SPEED;
+						maxTiltStepSpeed += 0.1 * MAXIMUM_TILT_STEP_SPEED;
+						maxSliderStepSpeed += 0.1 * MAXIMUM_SLIDER_STEP_SPEED;
+						string panSpeed = "s" + to_string(maxPanStepSpeed);
+						string tiltSpeed = "S" + to_string(maxTiltStepSpeed);
+						string sliderSpeed = "X" + to_string(maxSliderStepSpeed);
+						char* panSpeedCommand = &panSpeed[0];
+						char* tiltSpeedCommand = &tiltSpeed[0];
+						char* sliderSpeedCommand = &sliderSpeed[0];
+						printf("Pan speed increase by 10%%.\n");
+						sendCharArray(panSpeedCommand);
+						printf("Tilt speed increase by 10%%.\n");
+						sendCharArray(tiltSpeedCommand);
+						printf("Slider speed increase by 10%%.\n");
+						sendCharArray(sliderSpeedCommand);
+						sendCharArray((char*)"m16");
+
+						toggleButton = false; //resetting the toggle to off
+					}
 					if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && !toggleButton) {
 						printf("Up: %d \n", (state.Gamepad.wButtons & UP_BUTTON));
 						sendCharArray((char*)"@"); //Up first element
@@ -446,14 +438,14 @@ int main(void) {
 						printf("View: %d \n", ((state.Gamepad.wButtons & VIEW_BUTTON) >> 5));
 						sendCharArray((char*)";1"); //views execute
 					}
-					if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) {
+					/*if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) {
 						printf("Y: %d \n", ((state.Gamepad.wButtons & Y_BUTTON) >> 6));
 						sendCharArray((char*)"m2"); //half step mode
-					} 
+					} */
 					if ((lastwButtons & R_BUTTON) < (state.Gamepad.wButtons & R_BUTTON)) {
 						printf("R: %d \n", ((state.Gamepad.wButtons & R_BUTTON) >> 7));
 						sendCharArray((char*)"m16"); //sixteenth step mode
-					}
+					}	
 					if ((lastwButtons & LB_BUTTON) < (state.Gamepad.wButtons & LB_BUTTON)) {
 						printf("LB: %d \n", ((state.Gamepad.wButtons & LB_BUTTON) >> 8));
 						sendCharArray((char*)"H3"); //Homing setting 3 (all axes)
@@ -485,7 +477,10 @@ int main(void) {
 					//printf("LT: %d \t", state.Gamepad.bLeftTrigger);
 					//printf("RT: %d \n", state.Gamepad.bRightTrigger);
 					//printf("wButtons %d \n", state.Gamepad.wButtons);
+					//previousButtons = lastwButtons;
+					
 					lastwButtons = state.Gamepad.wButtons;
+					//toggleButton = false; //resetting the toggle to off
 					lastDwPacketNumber = state.dwPacketNumber;
 					
 				}
