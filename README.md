@@ -14,7 +14,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 2. Create .txt file with the correct port
 3. Ensure all cables are connected
 4. Rebuild and compile
-5. Operate using these commands
+5. Operate using [these commands](Gaming Controller Commands.pdf)
 
 ## Installation & Build
 1. Install Arduino IDE
