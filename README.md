@@ -9,11 +9,17 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 ### 3. [Software Design](Software.md)
 
 ## Setup
-### Once the system is built:
-1. Download the code to use the gaming controller [here](Gaming_Controller/Xbox_Control.cpp) 
-2. Create .txt file with the correct port like such
+### With Gaming Controller
+1. Download the code [here](Gaming_Controller/Xbox_Control.cpp) 
+2. Enter the Nano 33 IoT port in this [.txt file](Gaming_Controller/serial_port.txt)
 3. Ensure all cables are connected
 4. Rebuild and compile
+5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
+
+### Without Gaming Controller
+1. Compile the Arduino code [here](Gaming_Controller/Xbox_Control.cpp) 
+3. Ensure all cables are connected
+4. Compile and execute
 5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
 
 ## Installation & Build
