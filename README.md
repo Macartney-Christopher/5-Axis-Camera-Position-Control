@@ -10,8 +10,8 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 
 ## Setup
 ### Once the system is built:
-1. Download the code to use the gaming controller here
-2. Create .txt file with the correct port
+1. Download the code to use the gaming controller [here](Gaming_Controller/Xbox_Control.cpp) 
+2. Create .txt file with the correct port like such
 3. Ensure all cables are connected
 4. Rebuild and compile
 5. Operate using [these commands](Gaming_Controller/Gaming_Controller_Commands.pdf)
