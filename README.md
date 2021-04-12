@@ -10,8 +10,8 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 
 ## Setup
 1. Plug the power cable to an outlet
-2. Plug the Xbox controller and the USB cable to your computer.
-3. Run the executable file.
+2. Plug the Xbox controller and the USB cable to your computer
+3. Run the executable file
 4. Enjoy!
 
 ## Installation
