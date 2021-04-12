@@ -1,5 +1,5 @@
 # Mechanical
-![image](https://user-images.githubusercontent.com/59852573/112387791-940a8f80-8cc8-11eb-9668-d42f66579010.png)
+![image](https://user-images.githubusercontent.com/59852573/114465532-3bd2f900-9bb5-11eb-834a-06dfd75de625.png)
 
 ## Camera Mount Adaptability
   - Design 1: Extendable Camera Mount
