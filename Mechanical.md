@@ -49,6 +49,11 @@
 	  #### Design 2 outweighed Design 1
 	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
 	  
+## Dynamic Lighting
+&nbsp;&nbsp;&nbsp;To control the lights alongside the entire "Tasmanian Devil" the design must be compatible with the current light and tripod design. The following design allows for the rig to be easily set on the tripod and controlled from a distance.
+<img src="https://user-images.githubusercontent.com/59852573/114408162-263ede80-9b77-11eb-93f3-7eef6c4e0d40.png" alt="drawing" width="300"/>
+
+
 ## 3D Printing Material
 &nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another in flexible, there was no significant change to the video. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:<br/>
 <img src="https://user-images.githubusercontent.com/59852573/110848820-7e36ac80-827c-11eb-80bb-a8386c81696d.png" alt="drawing" width="500"/>
@@ -57,4 +62,5 @@
 ### Assembly
 &nbsp;&nbsp;&nbsp;When assembling mechanical parts it is to your advantage to include screws, nuts, and other ignored components. All CAD files for common pieces can be found on McMaster-Carr's website with many options. Ignoring to include the screws can lead to possible collisions with parts or even worse, a camera.
 For a project like this one it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing others.
+
 
