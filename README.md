@@ -12,7 +12,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 1. Plug the power cable to an outlet
 2. Plug the Xbox controller and the USB cable to your computer
 3. Download the folder [Tasmanian Launch](https://github.com/Macartney-Christopher/5-Axis-Camera-Position-Control/tree/main/Tasmanian%20Launch)
-4. Run the Master_Batch file
+4. Run the [Master_Batch](Tasmanian_Launch/Master_Batch.bat) file
 5. Enjoy!
 
 ## Installation
@@ -29,12 +29,11 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 4. Compile and execute
 5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/3-Axis Slider Commands List.pdf)
 
-## Usage: This would also be a good place to include screenshots of your project in action.
+## Build
 1. Upload the Arduino code to the Nano 33 IoT
 3. Assemble the 3D prints
 4. Set up the wiring
 5. Open the and compile the Bluetooth code on C++ compiler
-6. Enjoy!
 
 ## Credits
   The mechanical, hardware, and software design is an adapted version of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
