@@ -1,0 +1,20 @@
+﻿  Source.cpp
+C:\Users\Macar\source\repos\Test_project\Source.cpp(60,22): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(61,23): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(62,25): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(331,49): warning C4244: '=': conversion from 'float' to 'short', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(332,49): warning C4244: '=': conversion from 'float' to 'short', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(349,48): warning C4244: '=': conversion from 'float' to 'short', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(350,48): warning C4244: '=': conversion from 'double' to 'short', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(359,24): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(378,54): warning C4244: '-=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(379,56): warning C4244: '-=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(380,60): warning C4244: '-=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(398,54): warning C4244: '+=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(399,56): warning C4244: '+=': conversion from 'double' to 'long', possible loss of data
+C:\Users\Macar\source\repos\Test_project\Source.cpp(400,60): warning C4244: '+=': conversion from 'double' to 'long', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 282 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Test_project.vcxproj -> C:\Users\Macar\source\repos\Test_project\Release\Test_project.exe
