@@ -9,6 +9,12 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 ### 3. [Software Design](Software.md)
 
 ## Setup
+1. Plug the power cable to an outlet
+2. Plug the Xbox controller and the USB cable to your computer.
+3. Run the executable file.
+4. Enjoy!
+
+## Installation
 ### With Gaming Controller
 1. Download the code [here](Gaming_Controller/Xbox_Control.cpp) 
 2. Enter the Nano 33 IoT port in this [.txt file](Gaming_Controller/serial_port.txt)
@@ -21,12 +27,6 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 3. Ensure all cables are connected
 4. Compile and execute
 5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/3-Axis Slider Commands List.pdf)
-
-## Installation & Build
-1. Install Arduino IDE
-2. Install a C++ compiler
-3. Download & 3D Print the parts
-4. Solder the components on the custom PCB
 
 ## Usage: This would also be a good place to include screenshots of your project in action.
 1. Upload the Arduino code to the Nano 33 IoT
