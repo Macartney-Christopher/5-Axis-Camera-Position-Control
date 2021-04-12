@@ -12,7 +12,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 1. Plug the power cable to an outlet
 2. Plug the Xbox controller and the USB cable to your computer
 3. Download the folder [Tasmanian Launch](https://github.com/Macartney-Christopher/5-Axis-Camera-Position-Control/tree/main/Tasmanian%20Launch)
-4. Run the [Master_Batch](Tasmanian_Launch/Master_Batch.bat) file
+4. Double-click on [Master_Batch](Tasmanian_Launch/Master_Batch.bat)
 5. Enjoy!
 
 ## Installation
