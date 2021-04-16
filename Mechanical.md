@@ -32,7 +32,8 @@
       -	3D printable
 
     #### Design 2 outweighed Design 1
-    <img src="https://user-images.githubusercontent.com/59852573/110356542-5e974e00-8008-11eb-9604-2b08a7cf43be.png" alt="drawing" width="500"/>
+    <img src="https://user-images.githubusercontent.com/59852573/115077743-8f528900-9ecc-11eb-9502-9e0999e6e293.png" alt="drawing" width="500"/>
+
 ## Additional Stepper Motors - Focus & Zoom Control
   - Design 1: Motors attached on the camera mount and adjustable
     - Motive: Fixed on the path of the camera
@@ -51,6 +52,7 @@
 	  
 ## Dynamic Lighting
 &nbsp;&nbsp;&nbsp;To control the lights alongside the entire "Tasmanian Devil" the design must be compatible with the current light and tripod design. The following design allows for the rig to be easily set on the tripod and controlled from a distance.
+
 <img src="https://user-images.githubusercontent.com/59852573/114408162-263ede80-9b77-11eb-93f3-7eef6c4e0d40.png" alt="drawing" width="300"/>
 
 
@@ -60,7 +62,5 @@
 
 ## Assembling In SolidWorks
 ### Assembly
-&nbsp;&nbsp;&nbsp;When assembling mechanical parts it is to your advantage to include screws, nuts, and other ignored components. All CAD files for common pieces can be found on McMaster-Carr's website with many options. Ignoring to include the screws can lead to possible collisions with parts or even worse, a camera.
-For a project like this one it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing others.
-
-
+&nbsp;&nbsp;&nbsp;When assembling mechanical parts it is to your advantage to include screws, nuts, and other typically ignored components. All CAD files the nuts, screws, and bearings can be found on McMaster-Carr's website with many options for thread, pitch, head, etc. Ignoring to include the screws can lead to possible collisions with parts or even worse, a camera.
+For a project like this one it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing some.
