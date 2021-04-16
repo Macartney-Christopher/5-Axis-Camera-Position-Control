@@ -10,36 +10,29 @@ The AccelStepper and MultiStepper libraries are complimentary, often one used to
 FlashStorage is more reliable than EEPROM. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
 
 ### Adding 2 Stepper Motors
-&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper ensure the other functions are not affected. Each function is modified by increasing data arrays, modifying function inputs/outputs, and adding functions and variables.
+&nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper, ensure the other functions are not affected. Each function is modified by increasing data arrays, increasing function inputs/outputs, and adding functions and variables to integrate the extra motors.
 
-&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial values are correct for the system's parameters requires a lot of empirical testing based on visual results of the motor actuation.
+&nbsp;&nbsp;&nbsp;It's simple to implement the functions and variables because they follow the same structure as the native code. Ensuring the initial values are correct for the system's parameters requires empirical testing based on visual results.
 
-&nbsp;&nbsp;&nbsp;Increasing the arrays and the function inputs can cause other issues in the call sequence. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` they weren't included with the hall sensing section or else the two additional motors would continuously rotate attempting to find a home position.
+&nbsp;&nbsp;&nbsp;Increasing the arrays and the function inputs can cause other issues in the call sequence. Three motors have a home (neutral) position based on hall effect sensors although the two additional motors do not. When adding the motors to ```findHome()``` they weren't included with the hall sensing section because hall sensors were not added alongside the two motors.
 
 ### Driving CPU Port Directly
-&nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that drives the microcontroller directly to set the step mode on their TMC2208 drivers.
-
-##### Arduino Nano Microcontroller Ports
-<img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
-&nbsp;&nbsp;&nbsp;As shown below, PORTB is used yet undeclared in the entire code. Moreover, no results come up when searching for PORTB.
-
+&nbsp;&nbsp;&nbsp;[Isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s implements a function that interacts the microcontroller ports directly to set the step mode on their TMC2208 drivers. For example, to set the step mode to 1/16:
 ```c++
-if(newMode == HALF_STEP){
-        PORTB |=   B00001000; //MS1 high
-        PORTB &= ~(B00000100); //MS2 low 
-    }
-    else if(newMode == QUARTER_STEP){
-        PORTB |=   B00000100; //MS2 high
-        PORTB &= ~(B00001000); //MS1 low
-    }
-    else if(newMode == EIGHTH_STEP){
-        PORTB &= ~(B00001100); //MS1 and MS2 low
-    }
-    else if(newMode == SIXTEENTH_STEP){
+if(newMode == SIXTEENTH_STEP){
         PORTB |= B00001100; //MS1 and MS2 high
-    }
+}
 ```
-&nbsp;&nbsp;&nbsp;Here, isaac879 uses the microcontroller ports directly. As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
+&nbsp;&nbsp;&nbsp;The above indicates to set the 3rd and 4th B ports to high and keeping all other low. The reason for this syntax is efficiency, it sets the MS1 and MS2 pins to high directly instead of going through a complementary function. For a maker it's easier to understand the following:
+```c++
+if(newMode == SIXTEENTH_STEP){
+	digitalWrite(PIN_MS1, HIGH);
+	digitalWrite(PIN_MS2, HIGH);
+}
+```
+&nbsp;&nbsp;&nbsp;For a comprehensive look at this, here are the pinouts of the CPU on the Nano:
+<img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
+&nbsp;&nbsp;&nbsp;As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
 
 ### Bit Manipulation - Bluetooth Implementation
 &nbsp;&nbsp;&nbsp;Sending the commands from the controller involves sending a character array. The information is allocated in the array like the following:
