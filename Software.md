@@ -32,6 +32,7 @@ if(newMode == SIXTEENTH_STEP){
 ```
 &nbsp;&nbsp;&nbsp;For a comprehensive look at this, here are the pinouts of the CPU on the Nano:
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
+
 &nbsp;&nbsp;&nbsp;As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
 
 ### Bit Manipulation - Bluetooth Implementation
