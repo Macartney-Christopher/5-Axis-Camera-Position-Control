@@ -16,8 +16,8 @@
       -	Possibility of camera rotation (mitigated by tightness 
 
     #### Design 2 outweighed Design 1
- <img src="https://user-images.githubusercontent.com/59852573/110705766-d8743680-81c4-11eb-9c58-b186b4b31b31.png" alt="drawing" width="500"/>
- 
+ <img src="https://user-images.githubusercontent.com/59852573/115062228-1812fa00-9eb8-11eb-8f24-fafb93f37250.png" alt="drawing" width="500"/>
+
 ## Slider Mount Tightening
   - Design 1: Spring Loaded Wheel Shaft (4 wheels total)
     - Motive: Consistent Fitment to Rail 
