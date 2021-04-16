@@ -1,7 +1,7 @@
 # Software
 
 ## Getting Familiar
-&nbsp;&nbsp;&nbsp;In total there are over 2000 lines of code. The best way to approach it is to get familiar with each library and then the functions in the code.
+&nbsp;&nbsp;&nbsp;In total there are over 2500 lines of code. The best way to approach it is to get familiar with each library and then the functions in the code.
 The AccelStepper and MultiStepper libraries are complimentary, often one used together. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM to store values while the system is off.
 
 ## Obstacles
@@ -37,7 +37,7 @@ if(newMode == SIXTEENTH_STEP){
 &nbsp;&nbsp;&nbsp;As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
 
 ### Bit Manipulation - Bluetooth Implementation
-&nbsp;&nbsp;&nbsp;Sending the commands from the controller involves sending a character array. The information is allocated in the array like the following:
+&nbsp;&nbsp;&nbsp;Sending the commands from the controller involves sending a character array. The information is allocated in the array as such:
 ```c++
 int sendSliderPanTiltStepSpeed(int command, short* arr) {
 	char data[11]; //Data array to send
@@ -59,15 +59,15 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
     ...
     int zoomStepSpeed = (Serial.read() << 8) + Serial.read();
 ```       
-&nbsp;&nbsp;&nbsp;The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. That would be due to the Nano 33 IoT being configured slightly differently than the Nano.
+&nbsp;&nbsp;&nbsp;The data was not receiving properly with the Nano 33 IoT. After further testing, all the ```int```'s had to be changed to ```int16_t```'s to explicitly convert it to a 16 bit integer. That is due to the Nano 33 IoT being configured slightly differently than the Nano.
 
 ### Adding Multi-Button Functions
-Isaac879 can get the state of the Xbox Controller buttons using, for example:
+&nbsp;&nbsp;&nbsp;Isaac879 can get the state of the Xbox Controller buttons using, for example:
 ```c++
 if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON))
 ```
-The above simply checks if the last button pressed corresponds to the Up button on the D-Pad.
-To add a multi-button function there  needs to be a toggle button which allows the user to use other buttons for different actions.
+&nbsp;&nbsp;&nbsp;The above simply checks if the last button pressed corresponds to the Up button on the D-Pad.
+&nbsp;&nbsp;&nbsp;To add a multi-button function there  needs to be a toggle button which allows the user to use other buttons for different actions.
 Let us set the Y Button as the toggle button. When pressed we can switch a bool value:
 ```c++
 if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //if Y Button is pressed
@@ -85,7 +85,7 @@ if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleB
 }
 ```
 ## Batch Files - Ease of use
-nspb;nspb;nspb;Any user of the Camera Rig should be able to click on a few buttons to have the system ready. The solution to this is batch files:
+&nbsp;&nbsp;&nbsp;Any user of the camera rig should be able to click on a few buttons to have the system ready without going into code. The solution to this is batch files:
 For this project the user only needs a connection from the gaming controller to the Arduino Nano 33 IoT and a document to explain the command functions.
 From one batch file there is no way to simoultaneously run/open code and a pdf. One needs to be closed for the other to open. 
 A simple work-around is to integrate two seperate ```.bat``` files into a master batch file:
