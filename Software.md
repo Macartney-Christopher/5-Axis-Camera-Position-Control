@@ -89,3 +89,14 @@ if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleB
 ...
 }
 ```
+## Batch Files - Ease of use
+nspb;nspb;nspb;Any user of the Camera Rig should be able to click on a few buttons to have the system ready. The solution to this is batch files:
+For this project the user only needs a connection from the gaming controller to the Arduino Nano 33 IoT and a document to explain the command functions.
+From one batch file there is no way to simoultaneously run/open code and a pdf. One needs to be closed for the other to open. 
+A simple work-around is to integrate two seperate ```.bat``` files into a master batch file:
+```bat
+@ECHO OFF
+start Xbox_Controller_Connection.bat 	rem Connects the Xbox controller to the Arduino Nano 33 IoT.
+start Xbox_Controller_Commands.bat 	rem Shows Xbox controller commands to the user.
+PAUSE
+```
