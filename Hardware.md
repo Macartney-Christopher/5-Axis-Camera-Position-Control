@@ -4,7 +4,7 @@
 
 ## CNC Shield: Driving Steppers Directly
 
-&nbsp;&nbsp;&nbsp;With the mechanical parts fully assembled, the camera system needed to be tested. Driving the steppers directly using a CNC Shield through Arduino mitigates any issues that could arise from code and wiring. [Find code here](Iteration-Code/CNC_Shield_Direct_Drive.ino) .
+&nbsp;&nbsp;&nbsp;With the mechanical parts fully assembled, the camera system needed to be tested. Driving the steppers directly using a CNC Shield through Arduino mitigates any issues that could arise from code and wiring. [Find code here](Iteration2-Code/CNC_Shield_Direct_Drive.ino) .
 
 ## CNC Shield: Driving Steppers with Universal G-Code Sender (UGS)
 Use Universal G-Code Sender with the CNC Shield to rapidly and realistically simulate the controls of the steppers. 
