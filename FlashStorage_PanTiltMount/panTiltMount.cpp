@@ -10,8 +10,8 @@
 AccelStepper stepper_pan = AccelStepper(1, PIN_STEP_PAN, PIN_DIRECTION_PAN);
 AccelStepper stepper_tilt = AccelStepper(1, PIN_STEP_TILT, PIN_DIRECTION_TILT);
 AccelStepper stepper_slider = AccelStepper(1, PIN_STEP_SLIDER, PIN_DIRECTION_SLIDER);
-AccelStepper stepper_focus = AccelStepper(8, motorPin11, motorPin13, motorPin12, motorPin14);//w
-AccelStepper stepper_zoom = AccelStepper(8, motorPin21, motorPin23, motorPin22, motorPin24);//w
+AccelStepper stepper_focus = AccelStepper(8, motorPin11, motorPin13, motorPin12, motorPin14);
+AccelStepper stepper_zoom = AccelStepper(8, motorPin21, motorPin23, motorPin22, motorPin24);
 
 MultiStepper multi_stepper;
 
@@ -62,8 +62,8 @@ byte homing_mode = 0; //Note: Gets set from the saved EEPROM value on startup
 float pan_max_speed = 18; //degrees/second. Note: Gets set from the saved EEPROM value on startup. 
 float tilt_max_speed = 10; //degrees/second.
 float slider_max_speed = 20; //mm/second
-float focus_max_speed = 10;//w
-float zoom_max_speed = 10;//w
+float focus_max_speed = 10;
+float zoom_max_speed = 10;
 
 long target_position[5];//Array to store stepper motor step counts
 
@@ -72,8 +72,8 @@ unsigned long delay_ms_between_pictures = 1000; //Note: Gets set from the saved 
 int pan_accel_increment_us = 4000;
 int tilt_accel_increment_us = 3000; 
 int slider_accel_increment_us = 3500; 
-int focus_accel_increment_us = 3000; //w
-int zoom_accel_increment_us = 3000; //w 
+int focus_accel_increment_us = 3000;
+int zoom_accel_increment_us = 3000;
 
 byte acceleration_enable_state = 0;
 FloatCoordinate intercept;
@@ -97,7 +97,7 @@ void initPanTilt(void){
     pinMode(PIN_SHUTTER_TRIGGER, OUTPUT);
     digitalWrite(PIN_SHUTTER_TRIGGER, LOW);
     
-    pinMode(motorPin11, OUTPUT);//w
+    pinMode(motorPin11, OUTPUT);
     pinMode(motorPin12, OUTPUT);
     pinMode(motorPin13, OUTPUT);
     pinMode(motorPin14, OUTPUT);
@@ -111,15 +111,15 @@ void initPanTilt(void){
     stepper_tilt.setMaxSpeed(tiltDegreesToSteps(tilt_max_speed));
     stepper_slider.setMaxSpeed(sliderMillimetresToSteps(slider_max_speed));
 
-    stepper_focus.setMaxSpeed(1000); //w
-    stepper_zoom.setMaxSpeed(1000); //w
+    stepper_focus.setMaxSpeed(1000); 
+    stepper_zoom.setMaxSpeed(1000);
     
     stepper_pan.setAcceleration(5000);
     stepper_tilt.setAcceleration(5000);
     stepper_slider.setAcceleration(5000);
     
-    stepper_focus.setAcceleration(5000);//w
-    stepper_zoom.setAcceleration(5000);//w
+    stepper_focus.setAcceleration(5000);
+    stepper_zoom.setAcceleration(5000);
     
     invertPanDirection(invert_pan);
     invertTiltDirection(invert_tilt);
@@ -129,8 +129,8 @@ void initPanTilt(void){
     multi_stepper.addStepper(stepper_tilt);
     multi_stepper.addStepper(stepper_slider);
 
-    multi_stepper.addStepper(stepper_focus);//w
-    multi_stepper.addStepper(stepper_zoom);//w
+    multi_stepper.addStepper(stepper_focus);
+    multi_stepper.addStepper(stepper_zoom);
     
     digitalWrite(PIN_ENABLE, LOW); //Enable the stepper drivers
 }
@@ -177,6 +177,35 @@ void setStepMode(int newMode){ //Step modes for the TMC2208
     if(newMode == HALF_STEP){
       digitalWrite(PIN_MS1, HIGH);
       digitalWrite(PIN_MS2, LOW);
+        //PORTB |=   B00001000; //MS1 high
+        //PORTB &= ~(B00000100); //MS2 low 
+    }
+    else if(newMode == QUARTER_STEP){
+      digitalWrite(PIN_MS1, LOW);
+      digitalWrite(PIN_MS2, HIGH);
+        //PORTB |=   B00000100; //MS2 high
+        //PORTB &= ~(B00001000); //MS1 low
+    }
+    else if(newMode == EIGHTH_STEP){
+      digitalWrite(PIN_MS1, LOW);
+      digitalWrite(PIN_MS2, LOW);
+        //PORTB &= ~(B00001100); //MS1 and MS2 low
+    }
+    else if(newMode == SIXTEENTH_STEP){
+      digitalWrite(PIN_MS1, HIGH);
+      digitalWrite(PIN_MS2, HIGH);
+        //PORTB |= B00001100; //MS1 and MS2 high
+    }
+    else{ //If an invalid step mode was entered.
+        printi(F("Invalid mode. Enter 2, 4, 8 or 16\n"));
+        return;
+    }
+
+ /* //Step modes for A4988
+  * 
+  * if(newMode == HALF_STEP){
+      digitalWrite(PIN_MS1, HIGH);
+      digitalWrite(PIN_MS2, LOW);
       digitalWrite(PIN_MS3, LOW);
     }
     else if(newMode == QUARTER_STEP){
@@ -198,14 +227,20 @@ void setStepMode(int newMode){ //Step modes for the TMC2208
         printi(F("Invalid mode. Enter 2, 4, 8 or 16\n"));
         return;
     }   
-    
+  * 
+  * 
+  * 
+  * 
+  * 
+  * 
+  */
     //Scale current step to match the new step mode
     stepper_pan.setCurrentPosition(stepper_pan.currentPosition() * stepRatio);
     stepper_tilt.setCurrentPosition(stepper_tilt.currentPosition() * stepRatio);
     stepper_slider.setCurrentPosition(stepper_slider.currentPosition() * stepRatio);
 
-    stepper_focus.setCurrentPosition(stepper_focus.currentPosition() * stepRatio);//w
-    stepper_zoom.setCurrentPosition(stepper_zoom.currentPosition() * stepRatio);//w
+    stepper_focus.setCurrentPosition(stepper_focus.currentPosition() * stepRatio);
+    stepper_zoom.setCurrentPosition(stepper_zoom.currentPosition() * stepRatio);
 
     pan_steps_per_degree = (200.0 * (float)newMode * PAN_GEAR_RATIO) / 360.0; //Stepper motor has 200 steps per 360 degrees
     tilt_steps_per_degree = (200.0 * (float)newMode * TILT_GEAR_RATIO) / 360.0; //Stepper motor has 200 steps per 360 degrees
@@ -218,8 +253,8 @@ void setStepMode(int newMode){ //Step modes for the TMC2208
     stepper_tilt.setMaxSpeed(tiltDegreesToSteps(tilt_max_speed));
     stepper_slider.setMaxSpeed(sliderMillimetresToSteps(slider_max_speed));
     
-    stepper_focus.setMaxSpeed(1000); //w
-    stepper_zoom.setMaxSpeed(1000);//w
+    stepper_focus.setMaxSpeed(1000); 
+    stepper_zoom.setMaxSpeed(1000);
 
     step_mode = newMode;
     printi(F("Set to "), step_mode, F(" step mode.\n"));
@@ -254,7 +289,7 @@ void tiltDegrees(float angle){
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void focusDegrees(float angle){ //w
+void focusDegrees(float angle){ 
     target_position[3] = focusDegreesToSteps(angle);
     if(acceleration_enable_state == 0){
         multi_stepper.moveTo(target_position);
@@ -267,7 +302,7 @@ void focusDegrees(float angle){ //w
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-void zoomDegrees(float angle){     //w
+void zoomDegrees(float angle){     
     target_position[4] = zoomDegreesToSteps(angle);
     if(acceleration_enable_state == 0){
         multi_stepper.moveTo(target_position);
@@ -406,11 +441,11 @@ bool findHome(void){
             multi_stepper.moveTo(target_position); 
             multi_stepper.runSpeedToPosition();        
         }
-        setTargetPositions(panStepsToDegrees(target_position[0]), tiltStepsToDegrees(target_position[1]), -1000,0,0);//z//1000 is about the length of the slider
+        setTargetPositions(panStepsToDegrees(target_position[0]), tiltStepsToDegrees(target_position[1]), -1000,0,0);//1200 is about the length of the slider
         while(multi_stepper.run()){
             if(digitalRead(PIN_SLIDER_HALL) == 0){
                 stepper_slider.setCurrentPosition(0);//set step count to 0
-                setTargetPositions(panStepsToDegrees(target_position[0]), tiltStepsToDegrees(target_position[1]), 0,0,0);//z
+                setTargetPositions(panStepsToDegrees(target_position[0]), tiltStepsToDegrees(target_position[1]), 0,0,0);
                 sliderHomeFlag = true;
             }
         }
@@ -422,7 +457,7 @@ bool findHome(void){
         while(digitalRead(PIN_PAN_HALL) == 0 || digitalRead(PIN_TILT_HALL) == 0){//If already on a Hall sensor move off
             target_position[0] = target_position[0] + panDegreesToSteps(!digitalRead(PIN_PAN_HALL));//increment by 1 degree
             target_position[1] = target_position[1] + tiltDegreesToSteps(!digitalRead(PIN_TILT_HALL));//increment by 1 degree
-            if(target_position[0] > panDegreesToSteps(90) && target_position[1] > tiltDegreesToSteps(90)){//If both axis have done more than a full rotation there must be an issue...
+            if(target_position[0] > panDegreesToSteps(360) && target_position[1] > tiltDegreesToSteps(360)){//If both axis have done more than a full rotation there must be an issue...
                 return false;
             }
             multi_stepper.moveTo(target_position); 
@@ -431,43 +466,43 @@ bool findHome(void){
         stepper_pan.setCurrentPosition(0);//set step count to 0
         stepper_tilt.setCurrentPosition(0);//set step count to 0
     
-        setTargetPositions(-45, -45, sliderPos,0,0);//z
+        setTargetPositions(-45, -45, sliderPos,0,0);
         while(multi_stepper.run()){
             if(digitalRead(PIN_PAN_HALL) == 0){
                 stepper_pan.setCurrentPosition(0);//set step count to 0
-                setTargetPositions(0, -45 * !tiltHomeFlag, sliderPos,0,0);//z
+                setTargetPositions(0, -45 * !tiltHomeFlag, sliderPos,0,0);
                 panHomeFlag = true;
                 panHomingDir = 1;
             }
             if(digitalRead(PIN_TILT_HALL) == 0){
                 stepper_tilt.setCurrentPosition(0);
-                setTargetPositions(-45 * !panHomeFlag, 0, sliderPos,0,0); //z
+                setTargetPositions(-45 * !panHomeFlag, 0, sliderPos,0,0);
                 tiltHomeFlag = true;
                 tiltHomingDir = 1;
             }
         }     
         
-        setTargetPositions(360 * !panHomeFlag, 360 * !tiltHomeFlag, sliderPos,0,0);//z//full rotation on both axis so it must pass the home position
+        setTargetPositions(360 * !panHomeFlag, 360 * !tiltHomeFlag, sliderPos,0,0);//full rotation on both axis so it must pass the home position
         while(multi_stepper.run()){
             if(digitalRead(PIN_PAN_HALL) == 0){
                 stepper_pan.setCurrentPosition(0);//set step count to 0
-                setTargetPositions(0, 360 * !tiltHomeFlag, sliderPos,0,0);//z
+                setTargetPositions(0, 360 * !tiltHomeFlag, sliderPos,0,0);
                 panHomeFlag = true;
             }
             if(digitalRead(PIN_TILT_HALL)  == 0){
                 stepper_tilt.setCurrentPosition(0);
-                setTargetPositions(360 * !panHomeFlag, 0, sliderPos,0,0);//z
+                setTargetPositions(360 * !panHomeFlag, 0, sliderPos,0,0);
                 tiltHomeFlag = true;
             }
         } 
     }
     
     if(panHomeFlag && tiltHomeFlag && (homing_mode == 2 || homing_mode == 3)){
-        setTargetPositions(hall_pan_offset_degrees * panHomingDir, hall_tilt_offset_degrees * tiltHomingDir, sliderPos,0,0);//z
+        setTargetPositions(hall_pan_offset_degrees * panHomingDir, hall_tilt_offset_degrees * tiltHomingDir, sliderPos,0,0);
         multi_stepper.runSpeedToPosition();
         stepper_pan.setCurrentPosition(0);//set step count to 0
         stepper_tilt.setCurrentPosition(0);//set step count to 0
-        setTargetPositions(0, 0, sliderPos,0,0);//z
+        setTargetPositions(0, 0, sliderPos,0,0);
         if(homing_mode == 3 && sliderHomeFlag == false){
             return false;
         }
@@ -1054,11 +1089,11 @@ void timelapse(unsigned int numberOfPictures, unsigned long msDelay){
     float panInc = panAngle / numberOfPictures;
     float tiltInc = tiltAngle / numberOfPictures;
 
-    setTargetPositions(panStepsToDegrees(keyframe_array[0].panStepCount), tiltStepsToDegrees(keyframe_array[0].tiltStepCount), sliderStepsToMillimetres(keyframe_array[0].sliderStepCount),0,0);//z
+    setTargetPositions(panStepsToDegrees(keyframe_array[0].panStepCount), tiltStepsToDegrees(keyframe_array[0].tiltStepCount), sliderStepsToMillimetres(keyframe_array[0].sliderStepCount),0,0);
     multi_stepper.runSpeedToPosition();//blocking move to the next position
     
     for(unsigned int i = 0; i <= numberOfPictures; i++){
-        setTargetPositions(panStepsToDegrees(keyframe_array[0].panStepCount) + (panInc * i), tiltStepsToDegrees(keyframe_array[0].tiltStepCount) + (tiltInc * i), sliderStepsToMillimetres(keyframe_array[0].sliderStepCount) + (sliderInc * i),0,0);//z
+        setTargetPositions(panStepsToDegrees(keyframe_array[0].panStepCount) + (panInc * i), tiltStepsToDegrees(keyframe_array[0].tiltStepCount) + (tiltInc * i), sliderStepsToMillimetres(keyframe_array[0].sliderStepCount) + (sliderInc * i),0,0);
         multi_stepper.runSpeedToPosition();//blocking move to the next position
         delay(halfDelay);
         triggerCameraShutter();//capture the picture
@@ -1143,7 +1178,7 @@ void interpolateTargetPoint(FloatCoordinate targetPoint, int repeat){ //The firs
             x = targetPoint.x - (sliderStartPos + increment * i);
             panAngle = radsToDeg(atan2(targetPoint.y, x));
             tiltAngle = radsToDeg(atan2(targetPoint.z, sqrt(pow(x, 2) + ySqared)));
-            setTargetPositions(panAngle, tiltAngle, sliderStartPos + increment * i,0,0);//z
+            setTargetPositions(panAngle, tiltAngle, sliderStartPos + increment * i,0,0);
             multi_stepper.runSpeedToPosition();//blocking move to the next position
         }
         x = targetPoint.x - sliderEndPos;
@@ -1273,8 +1308,6 @@ void serialData(void){
         break;
         case INSTRUCTION_TIMELAPSE:{
             printi(F("Timelapse with "), serialCommandValueInt, F(" pics\n"));
-            //printi(F(""), delay_ms_between_pictures, F("ms between pics\n"));
-            //timelapse(serialCommandValueInt, delay_ms_between_pictures);
             printi(F("Finished\n"));
         }
         break;
@@ -1291,7 +1324,7 @@ void serialData(void){
                 stepper_focus.setCurrentPosition(0);
                 stepper_zoom.setCurrentPosition(0);
                 
-                setTargetPositions(0, 0, 0,0,0); //z
+                setTargetPositions(0, 0, 0,0,0);
                 printi(F("Error homing\n"));
             }
         }
@@ -1408,13 +1441,13 @@ void serialData(void){
         }
         break; 
         case INSTRUCTION_SET_PAN_SPEED:{
-            printi(F("Max pan speed: "), serialCommandValueFloat, 1, "º/s.\n");
+            printi(F("Max pan speed: "), serialCommandValueFloat, 1, "deg/s.\n");
             pan_max_speed = serialCommandValueFloat;
             stepper_pan.setMaxSpeed(panDegreesToSteps(pan_max_speed));
         }
         break; 
         case INSTRUCTION_SET_TILT_SPEED:{
-            printi(F("Max tilt speed: "), serialCommandValueFloat, 1, "º/s.\n");
+            printi(F("Max tilt speed: "), serialCommandValueFloat, 1, "deg/s.\n");
             tilt_max_speed = serialCommandValueFloat;
             stepper_tilt.setMaxSpeed(tiltDegreesToSteps(tilt_max_speed));
         }

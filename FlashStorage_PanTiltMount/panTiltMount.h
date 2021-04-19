@@ -78,7 +78,7 @@
 #define INSTRUCTION_ADD_DELAY 'd'
 #define INSTRUCTION_EDIT_DELAY 'D'
 #define INSTRUCTION_CLEAR_ARRAY 'C'
-#define INSTRUCTION_SAVE_TO_FLASHSTORAGE 'U' //x
+#define INSTRUCTION_SAVE_TO_FLASHSTORAGE 'U'
 #define INSTRUCTION_TIMELAPSE 'l'               
 #define INSTRUCTION_SLIDER_MILLIMETRES 'x'        
 #define INSTRUCTION_INVERT_SLIDER 'j'             
@@ -91,8 +91,8 @@
 #define INSTRUCTION_SLIDER_ACCEL_INCREMENT_DELAY 'w'
 #define INSTRUCTION_SCALE_SPEED 'W'
 
-#define INSTRUCTION_FOCUS_DEGREES 'f' //focus x degrees //w
-#define INSTRUCTION_ZOOM_DEGREES 'y' //zoom x degrees  //w
+#define INSTRUCTION_FOCUS_DEGREES 'f' //focus x degrees 
+#define INSTRUCTION_ZOOM_DEGREES 'y' //zoom x degrees  
 #define INSTRUCTION_INVERT_FOCUS 'F'
 #define INSTRUCTION_INVERT_ZOOM 'Y'
 
