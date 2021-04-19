@@ -31,7 +31,7 @@
 1. Compile the Arduino code [here](FlashStorage_PanTiltMount/FlashStorage_PanTiltMount.ino) 
 3. Ensure all cables are connected
 4. Compile and execute
-5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/3-Axis Slider Commands List.pdf)
+5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/5-Axis_Position_Control_Commands.pdf)
 
 ## Credits
   The mechanical, hardware, and software design is an adapted version of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
