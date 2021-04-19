@@ -1,7 +1,8 @@
 # 5-Axis-Camera-Position-Control
-  The "Tasmanian Devil" is a 5-axis camera position control system to get all the video shots you could dream of. The entire design is an extension from [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s camera rig with three axes, and a shutter control. Using Isaac879's available pinouts and step files, his design was modified to account for focus and zoom control.
-  Before reading through the rest of the repository it is strongly suggested to look at [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s original work on this project.
-Go see the final product in action on YouTube [here](https://www.youtube.com/watch?v=kPsWlgf-iiQ)!
+  The "Tasmanian Devil" is a 5-axis camera position control system to get all the video shots you could dream of. The design is an extension from [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s camera rig which allows the use of three axes, and a shutter control. Using Isaac879's available pinouts and step files, their design was modified to account for focus and zoom, or dynamic lighting control.
+  Go see the final product in action on YouTube [here](https://www.youtube.com/watch?v=kPsWlgf-iiQ)! 
+  To understand the modifications made it is strongly suggested to look at [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s original work on this project.
+
 
 ## Table of Contents
 ### 1. [Mechanical Design](Mechanical.md)
