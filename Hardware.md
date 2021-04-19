@@ -70,14 +70,16 @@ Thankfully the 28BYJ-48 stepper motors and their respective ULN2003 drivers only
 &nbsp;&nbsp;&nbsp;To being, R1 and R5 must be shorted because their corresponding pins D0 (RX) and A1 pins are not being used for what the PCB intended. Ensure that the resistor is not part of the circuit at all or it will affect the digital signal to the stepper motor. 
 Next, cut the PCB at the designated lines to not short out the Nano 33 IoT.
 
-![image](https://user-images.githubusercontent.com/59852573/115261281-7b439d00-a101-11eb-9f18-1345e6e5ccc1.png)
+<img src="https://user-images.githubusercontent.com/59852573/115261281-7b439d00-a101-11eb-9f18-1345e6e5ccc1.png" alt="drawing" width="300"/>
 
 The Nano does not relay the power to the hall sensor due to the cuts therefore let us override that as shown using the shorter yellow cable in the image below.
-![image](https://user-images.githubusercontent.com/59852573/115261553-b5ad3a00-a101-11eb-8201-ec541809c458.png)
+
+<img src="https://user-images.githubusercontent.com/59852573/115261553-b5ad3a00-a101-11eb-8201-ec541809c458.png" alt="drawing" height="300"/>
 
 &nbsp;&nbsp;&nbsp;To implement the additional stepper motors male headers are required on the free pinouts to connect the ULN2003 drivers. For pin A2 there is no free pinout on the PCB but soldering a wire with a female end straight underneath the Nano header works just as well as shown with the white wire in the image above. <br/> 
  
 &nbsp;&nbsp;&nbsp;Finally, connect the 7-10cm wires from the digital pinouts to the ULN2003 drivers and the two split wires from the PCB ground and power to the two drivers. The wiring should look like the below.
+
 ![image](https://user-images.githubusercontent.com/59852573/115262288-63b8e400-a102-11eb-984b-5b2c8d2bed62.png)
 
 
