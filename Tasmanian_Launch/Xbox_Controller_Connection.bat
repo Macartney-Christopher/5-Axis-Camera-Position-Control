@@ -1,3 +1,3 @@
 @ECHO OFF
-.\Code\Release\Test_project.exe
+.\Tasmanian_Launcher\Debug\Tasmanian_Launcher.exe
 PAUSE
