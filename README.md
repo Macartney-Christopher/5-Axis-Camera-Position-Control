@@ -24,7 +24,7 @@ Go see the final product in action on YouTube [here](https://www.youtube.com/wat
 5. Open the and compile the Bluetooth code on C++ compiler
 
 #### With Gaming Controller
-nbsp;nbsp;nbsp;Follow the "Setup" protocol
+&nbsp;&nbsp;&nbsp;Follow the "Setup" protocol
 
 #### Without Gaming Controller
 1. Compile the Arduino code [here](FlashStorage_PanTiltMount/FlashStorage_PanTiltMount.ino) 
