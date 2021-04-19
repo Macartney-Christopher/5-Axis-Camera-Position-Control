@@ -14,7 +14,7 @@
 2. Plug the Xbox controller and the USB cable to your computer
 3. Download the folder [Tasmanian_Launch](Tasmanian_Launch)
 4. Update [serial_port.txt](Tasmanian_Launch/serial_port.txt) with the port that the Nano is connected to
-5. Double-click on [Tasmanian_Launch.bat](Tasmanian_Launch/Master_Batch.bat)
+5. Double-click on [Tasmanian_Launch.bat](Tasmanian_Launch/Tasmanian_Launch.bat)
 6. Enjoy!
 
 ## Do It Yourself
