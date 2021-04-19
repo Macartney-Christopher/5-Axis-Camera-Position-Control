@@ -5,7 +5,7 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 * IN THE SOFTWARE
 *
-* Code written by isaac879
+* Code written by isaac879 & Christopher Macartney
 */
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -57,9 +57,9 @@ using namespace std;
 
 bool toggleButton = false; //for multi-button functions
 
-long maxPanStepSpeed = MAXIMUM_PAN_STEP_SPEED;
-long maxTiltStepSpeed = MAXIMUM_TILT_STEP_SPEED;
-long maxSliderStepSpeed = MAXIMUM_SLIDER_STEP_SPEED;
+double maxPanStepSpeed = MAXIMUM_PAN_STEP_SPEED;
+double maxTiltStepSpeed = MAXIMUM_TILT_STEP_SPEED;
+double maxSliderStepSpeed = MAXIMUM_SLIDER_STEP_SPEED;
 //Flags
 bool portOpenFlag = false; //The flag used to determine if the serial port for the Arduino Nano is opened
 HANDLE hSerial;// Serial handle
@@ -233,7 +233,7 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
 	data[3] = (arr[1] >> 8) & 0xFF;
 	data[4] = arr[1] & 0xFF;
 	data[5] = (arr[2] >> 8) & 0xFF;
-	data[6] = arr[2] & 0xFF; 
+	data[6] = arr[2] & 0xFF;
 	data[7] = (arr[3] >> 8) & 0xFF;
 	data[8] = arr[3] & 0xFF;
 	data[9] = (arr[4] >> 8) & 0xFF;
@@ -267,7 +267,7 @@ std::string getPortName(std::string filePath) {
 
 int panTiltInit(void) {
 	//Connects to the com port that the Arduino is connected to.
-	for (int i = 0; (i < 5) && (serialConnect(getPortName("C:\\Users\\Macar\\OneDrive\\Documents\\HAPLY Robotics\\Three Axis Camera Rail\\Bluetooth\\serial_port.txt").c_str()) != 0); i++) { //path to .txt files containing the name of the COM port. The file should contain "\\.\COM10" without quotes to connect to COM10
+	for (int i = 0; (i < 5) && (serialConnect(getPortName(".\\serial_port.txt").c_str()) != 0); i++) { //path to .txt files containing the name of the COM port. The file should contain "\\.\COM10" without quotes to connect to COM10
 		Sleep(1000);
 		if (i == 4) {
 			std::cout << "Error: Unable to open serial port after 5 attempts..." << std::endl;
@@ -281,7 +281,7 @@ int panTiltInit(void) {
 
 int main(void) {
 	panTiltInit();
-	short shortVals[5] = { 0, 0, 0, 0, 0};
+	short shortVals[5] = { 0, 0, 0, 0, 0 };
 	DWORD dwResult;
 	WORD lastwButtons = 0;
 	DWORD lastDwPacketNumber = 0;
@@ -359,17 +359,17 @@ int main(void) {
 					long TriggerTotal = (((RTrig + LTrig) * MAXIMUM_ZOOM_STEP_SPEED)) / 255;
 
 					short TriggerShort = INT(TriggerTotal);
-					
+
 					shortVals[0] = LXShort;
 					shortVals[1] = RXShort;
 					shortVals[2] = RYShort;
 					shortVals[3] = LYShort;
 					shortVals[4] = TriggerShort;
-			
+
 					sendSliderPanTiltStepSpeed(INSTRUCTION_BYTES_SLIDER_PAN_TILT_SPEED, shortVals); //send the combined values
 					Sleep(10);
 
-					
+
 
 					if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //increase speed of pan, tilt, slider by 100 steps
 						toggleButton = true; //this prevents the UP_BUTTON from activating on its own
@@ -438,14 +438,10 @@ int main(void) {
 						printf("View: %d \n", ((state.Gamepad.wButtons & VIEW_BUTTON) >> 5));
 						sendCharArray((char*)";1"); //views execute
 					}
-					/*if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) {
-						printf("Y: %d \n", ((state.Gamepad.wButtons & Y_BUTTON) >> 6));
-						sendCharArray((char*)"m2"); //half step mode
-					} */
 					if ((lastwButtons & R_BUTTON) < (state.Gamepad.wButtons & R_BUTTON)) {
 						printf("R: %d \n", ((state.Gamepad.wButtons & R_BUTTON) >> 7));
 						sendCharArray((char*)"m16"); //sixteenth step mode
-					}	
+					}
 					if ((lastwButtons & LB_BUTTON) < (state.Gamepad.wButtons & LB_BUTTON)) {
 						printf("LB: %d \n", ((state.Gamepad.wButtons & LB_BUTTON) >> 8));
 						sendCharArray((char*)"H3"); //Homing setting 3 (all axes)
@@ -470,19 +466,9 @@ int main(void) {
 						printf("L: %d \n", ((state.Gamepad.wButtons & L_BUTTON) >> 15));
 						sendCharArray((char*)"R"); //Y status
 					}
-					//printf("LX: %d \t", state.Gamepad.sThumbLX);
-					//printf("LY: %d \t", state.Gamepad.sThumbLY);
-					//printf("RX: %d \t", state.Gamepad.sThumbRX);
-					//printf("RY: %d \n", state.Gamepad.sThumbRY);
-					//printf("LT: %d \t", state.Gamepad.bLeftTrigger);
-					//printf("RT: %d \n", state.Gamepad.bRightTrigger);
-					//printf("wButtons %d \n", state.Gamepad.wButtons);
-					//previousButtons = lastwButtons;
-					
 					lastwButtons = state.Gamepad.wButtons;
-					//toggleButton = false; //resetting the toggle to off
 					lastDwPacketNumber = state.dwPacketNumber;
-					
+
 				}
 			}
 		}
