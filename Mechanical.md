@@ -48,8 +48,11 @@
       -	Gravity helps prevent any skipping of the gears because they are above the lens
 
 	  #### Design 2 outweighed Design 1
-	  <img src="https://user-images.githubusercontent.com/59852573/110705291-32283100-81c4-11eb-93de-697506ec297f.png" alt="drawing" width="500"/>
-	  
+	  <img src="https://user-images.githubusercontent.com/59852573/115255186-03bf3f00-a0fc-11eb-8c53-ad4d4107cd8d.png" alt="drawing" width="400" height="325"/><img src="https://user-images.githubusercontent.com/59852573/115255222-0ae64d00-a0fc-11eb-864f-c737a50ace0e.png" alt="drawing" width="400" height="325"/>
+	 
+
+
+  
 ## Dynamic Lighting
 &nbsp;&nbsp;&nbsp;To control the lights alongside the entire "Tasmanian Devil" the design must be compatible with the current light and tripod design. The following design allows for the rig to be easily set on the tripod and controlled from a distance.
 
