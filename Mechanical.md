@@ -56,7 +56,7 @@
 ## Dynamic Lighting
 &nbsp;&nbsp;&nbsp;To control the lights alongside the entire "Tasmanian Devil" the design must be compatible with the current light and tripod design. The following design allows for the rig to be easily set on the tripod and controlled from a distance.
 
-<img src="https://user-images.githubusercontent.com/59852573/114408162-263ede80-9b77-11eb-93f3-7eef6c4e0d40.png" alt="drawing" width="300"/>
+<img src="https://user-images.githubusercontent.com/59852573/114408162-263ede80-9b77-11eb-93f3-7eef6c4e0d40.png" alt="drawing" width="300" height="400"/><img src="https://user-images.githubusercontent.com/59852573/115256415-3158b800-a0fd-11eb-8ac1-2b5b1eba7ebc.png" alt="drawing" width="300" height="400"/>
 
 ## 3D Printing Material
 &nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another in flexible, there was no significant change to the video. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:<br/>
