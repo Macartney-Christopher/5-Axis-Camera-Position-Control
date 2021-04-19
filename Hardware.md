@@ -21,7 +21,7 @@ Use Universal G-Code Sender with the CNC Shield to rapidly and realistically sim
 1. Draw what the motors would do in cartesian coordinates and convert to G commands.
 	This is an interesting idea because the user could visually see the sequence of motor actuation. The biggest issue is being able to constantly convert to cartesian coordinates as the user draws on two of three axes. 
 2. Write code to enter the desired angles of the camera and output the G commands.
-	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](Iteration-Code/GCode_Maker.cs).
+	This idea is feasible and both ends of the blackbox make sense for the user. [See C# code here](Iteration2-Code/GCode_Maker.cs).
 
 &nbsp;&nbsp;&nbsp;The C# program asks for angle of tilting and panning, and the distance of slider travel. It gives in return two G commands, the first to set the initial position and the second to execute the desired move.
 [Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
