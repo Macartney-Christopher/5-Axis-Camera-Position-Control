@@ -26,6 +26,24 @@ Use Universal G-Code Sender with the CNC Shield to rapidly and realistically sim
 &nbsp;&nbsp;&nbsp;The C# program asks for angle of tilting and panning, and the distance of slider travel. It gives in return two G commands, the first to set the initial position and the second to execute the desired move.
 [Watch an example video on Youtube](https://youtu.be/lNg3zl9IBe4).
 
+## Stepper Motor Driver Setup
+&nbsp;&nbsp;&nbsp;When installing new drivers on the board make sure that the current limiting is set correctly using the potentiometer. For reference, Current Limit = VRef x 2.
+Example: The A4988 stepper driver has a current limit of 2 A, which realistically is bit less unless the cooling on the IC (integrated circuit) is 100% efficient. Based on the above equation that means the VRef is approximately 0.9 A. To ensure your chip doesn't burnout it is highly suggested to slightly reduce your VRef and add a heat sink to the driver. 
+To test if your driver won't burnout turn on your system with your finger on the heat sink, if it gets too hot then immediately turn off your system and troubleshoot.
+- Ensure that a motor is connected to draw power
+- Double check your current limit and the VRef on the potentiometer
+- Test your driver on a functional system to check functionality
+
+
+## Troubleshoot: Why is my stepper motor not working?
+
+- Is the motor is connected?
+- Is the power cable connected and turned on?
+- Is the motor receiving enough power? Check with a multimeter.
+- Is the header for the motor receiving data from the board? Check connections with a multimeter.
+- 
+
+
 ## Using a Custom PCB
 &nbsp;&nbsp;&nbsp;Isaac879 includes the files and the component list to build the PCB in his repository. After soldering the components to the board we can begin testing.
 *Note: The final objective is to have five total stepper motors, two more than what the PCB accounts for.*
