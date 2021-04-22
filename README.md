@@ -1,5 +1,5 @@
 # 5-Axis-Camera-Position-Control
-  The "Tasmanian Devil" is a 5-axis camera position control system to get all the video shots you could dream of. The design is an extension from [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s camera rig which allows the use of three axes, and a shutter control. Using Isaac879's available pinouts and step files, their design was modified to account for focus and zoom, or dynamic lighting control.
+  The "Tasmanian Devil" is a 5-axis camera position control system to get all the video shots you could dream of. The design is an extension of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s camera rig which allows the use of three axes, and shutter control. Using Isaac879's available pinouts and step files, their design was modified to account for focus and zoom, or dynamic lighting control.
   Go see the final product in action on YouTube [here](https://www.youtube.com/watch?v=kPsWlgf-iiQ)! 
   To understand the modifications made it is strongly suggested to look at [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s original work on this project.
 
@@ -34,6 +34,6 @@
 5. Operate in Arduino IDE using [these commands](FlashStorage_PanTiltMount/5-Axis_Position_Control_Commands.pdf)
 
 ## Credits
-  The mechanical, hardware, and software design is an adapted version of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
+  The mechanical, hardware and software design is an adapted version of [isaac879](https://github.com/isaac879/Pan-Tilt-Mount)'s project. Isaac879 did a tremendous job with every aspect of the project and shows great skill in his other project as well. [Isaac879's video](https://www.youtube.com/watch?v=1FfB7cLkUyQ) is very well structured and edited.
 ## License
 [Project license](LICENSE).
