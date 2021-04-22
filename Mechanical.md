@@ -59,11 +59,11 @@
 <img src="https://user-images.githubusercontent.com/59852573/114408162-263ede80-9b77-11eb-93f3-7eef6c4e0d40.png" alt="drawing" width="300" height="400"/><img src="https://user-images.githubusercontent.com/59852573/115256415-3158b800-a0fd-11eb-8ac1-2b5b1eba7ebc.png" alt="drawing" width="300" height="400"/>
 
 ## 3D Printing Material
-&nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another in flexible, there was no significant change to the video. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:<br/>
+&nbsp;&nbsp;&nbsp;The entire 5-axis camera rig is made of PLA, a relatively strong plastic and easy to work with. Two axes work with gears to increase ratio and precision. The contact from the gears could lead to increased vibrations and inconsistent filming. When printing one of the gears twice, once in semi-flexible and another flexible, there was no significant change to the recording. Moreover, softer teeth could increase the chances of gears skipping which would create shaking in the video at higher speeds. Gears as shown below:<br/>
 <img src="https://user-images.githubusercontent.com/59852573/115081672-b01ddd00-9ed2-11eb-9368-d9599d85b351.png" alt="drawing" width="500"/>
 
 
 ## Assembling In SolidWorks
 ### Assembly
 &nbsp;&nbsp;&nbsp;When assembling mechanical parts it is to your advantage to include screws, nuts, and other typically ignored components. All CAD files the nuts, screws, and bearings can be found on McMaster-Carr's website with many options for thread, pitch, head, etc. Ignoring to include the screws can lead to possible collisions with parts or even worse, a camera.
-For a project like this one it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing some.
+For a project like this, it may be advantageous to have a second assembly in which you can include the components to be printed. Often, when printing, offsets and chamfers are required depending on the printer's quality. A second assembly helps visualize the offsets and where you might be missing some.
