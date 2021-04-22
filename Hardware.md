@@ -32,16 +32,16 @@ Example: The A4988 stepper driver has a current limit of 2 A, which realisticall
 To test if your driver won't burnout turn on your system with your finger on the heat sink, if it gets too hot then immediately turn off your system and troubleshoot.
 - Ensure that a motor is connected to draw power
 - Double check your current limit and the VRef on the potentiometer
-- Test your driver on a functional system to check functionality
+- Test your driver on a working system to check its functionality
 
 
 ## Troubleshoot: Why is my stepper motor not working?
 
 - Is the motor is connected?
 - Is the power cable connected and turned on?
-- Is the motor receiving enough power? Check with a multimeter.
-- Is the header for the motor receiving data from the board? Check connections with a multimeter.
-- 
+- Is the motor receiving enough power? Check with a multimeter
+- Is the header for the motor receiving data from the board? Check connections with a multimeter
+- Is the motor broken? Plug it into a working system to check its functionality
 
 
 ## Using a Custom PCB
