@@ -2,12 +2,12 @@
 
 ## Getting Familiar
 &nbsp;&nbsp;&nbsp;In total there are over 2500 lines of code. The best way to approach it is to get familiar with each library and then the functions in the code.
-The AccelStepper and MultiStepper libraries are complimentary, often one used together. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM to store values while the system is off.
+The AccelStepper and MultiStepper libraries are complimentary, often used together. [Isaac879](https://github.com/isaac879/Pan-Tilt-Mount) uses EEPROM to store values while the system is off.
 
 ## Obstacles
 ### EEPROM & FlashStorage
 &nbsp;&nbsp;&nbsp;When changing from the Nano to the Nano 33 BLE and the Nano 33 IoT there's a complete loss of EEPROM. That issue was mitigated by including the FlashStorage library.
-FlashStorage is more reliable than EEPROM. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage there is still functionality even when reset.
+FlashStorage is more reliable than EEPROM. If the Nano was reset then none of the functions would function because the EEPROM values were uninitialized. With the Nano 33 IoT and FlashStorage, there is still functionality even when reset.
 
 ### Adding 2 Stepper Motors
 &nbsp;&nbsp;&nbsp;When initializing the 2 additional motors in the code using AccelStepper, ensure the other functions are not affected. Each function is modified by increasing data arrays, increasing function inputs/outputs, and adding functions and variables to integrate the extra motors.
@@ -23,7 +23,7 @@ if(newMode == SIXTEENTH_STEP){
         PORTB |= B00001100; //MS1 and MS2 high
 }
 ```
-&nbsp;&nbsp;&nbsp;The above indicates to set the 3rd and 4th B ports to high and keeping all other low. The reason for this syntax is efficiency, it sets the MS1 and MS2 pins to high directly instead of going through a complementary function. For a maker it's easier to understand the following:
+&nbsp;&nbsp;&nbsp;The above indicates to set the 3rd and 4th B ports to HIGH and keeping all others LOW. The reason for this syntax is efficiency, it sets the MS1 and MS2 pins to high directly instead of going through a complementary function. For a maker it's easier to understand the following:
 ```c++
 if(newMode == SIXTEENTH_STEP){
 	digitalWrite(PIN_MS1, HIGH);
@@ -34,7 +34,7 @@ if(newMode == SIXTEENTH_STEP){
 
 <img src="https://user-images.githubusercontent.com/59852573/110517405-d2089080-80d8-11eb-86dc-c39aba4eb1f4.png" alt="drawing" width="350"/>
 
-&nbsp;&nbsp;&nbsp;As seen above, there are eight B Ports which correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
+&nbsp;&nbsp;&nbsp;As seen above, there are eight B Ports that correspond to the 8 digits in the code. Despite how efficient it is for the regular Nano, the Nano 33 IoT is faster and the code could be simplified using digitalWrite().
 
 ### Bit Manipulation - Bluetooth Implementation
 &nbsp;&nbsp;&nbsp;Sending the commands from the controller involves sending a character array. The information is allocated in the array as such:
@@ -67,7 +67,7 @@ int sendSliderPanTiltStepSpeed(int command, short* arr) {
 if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON))
 ```
 &nbsp;&nbsp;&nbsp;The above simply checks if the last button pressed corresponds to the Up button on the D-Pad.
-&nbsp;&nbsp;&nbsp;To add a multi-button function there  needs to be a toggle button which allows the user to use other buttons for different actions.
+&nbsp;&nbsp;&nbsp;To add a multi-button function there needs to be a toggle button that allows the user to use other buttons for different actions.
 Let us set the Y Button as the toggle button. When pressed we can switch a bool value:
 ```c++
 if ((lastwButtons & Y_BUTTON) < (state.Gamepad.wButtons & Y_BUTTON)) { //if Y Button is pressed
@@ -86,9 +86,9 @@ if ((lastwButtons & UP_BUTTON) < (state.Gamepad.wButtons & UP_BUTTON) && toggleB
 ```
 ## Batch Files - Ease of use
 &nbsp;&nbsp;&nbsp;Any user of the camera rig should be able to click on a few buttons to have the system ready without going into code. The solution to this is batch files:
-For this project the user only needs a connection from the gaming controller to the Arduino Nano 33 IoT and a document to explain the command functions.
-From one batch file there is no way to simoultaneously run/open code and a pdf. One needs to be closed for the other to open. 
-A simple work-around is to integrate two seperate ```.bat``` files into a master batch file:
+For this project, the user only needs a connection from the gaming controller to the Arduino Nano 33 IoT and a document to explain the command functions.
+From one batch file, there is no way to simultaneously run/open code and a pdf. One needs to be closed for the other to open. 
+A simple workaround is to integrate two separate ```.bat``` files into a master batch file:
 ```bat
 @ECHO OFF
 start Xbox_Controller_Connection.bat 	rem Connects the Xbox controller to the Arduino Nano 33 IoT.
